@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.events.listeners.EventRenderGui;
 import xyz.terrifictable.module.Module;
-import xyz.terrifictable.module.modules.render.ArrayList;
 import xyz.terrifictable.setting.Setting;
 import xyz.terrifictable.setting.settings.BooleanSetting;
 import xyz.terrifictable.setting.settings.ModeSetting;
@@ -26,6 +25,7 @@ public class Hud {
     private double rainbowBrightness;
     private double rainbowSaturation;
     private long rainbowAmplifier;
+    boolean watermark;
 
 
     public void draw() {
@@ -37,19 +37,36 @@ public class Hud {
                 .reversed()
         );
 
+        for (Setting setting : Client.getModuleByName("hud").settings) {
+            if (setting instanceof BooleanSetting) {
+                // Watermark
+                if (setting.name.equalsIgnoreCase("watermark")) {
+                    watermark = ((BooleanSetting) setting).isEnabled();
+                }
+            }
+            else if (setting instanceof NumberSetting) {
+
+            }
+            else if (setting instanceof ModeSetting) {
+
+            }
+        }
+
+
         // Watermark
-        int watermark_y = 2;
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(2, 2, 0);
-        GlStateManager.scale(1.6, 1.6, 1);
-        GlStateManager.translate(-2, -2, 0);
-        fr.drawString(Client.name, 2, watermark_y, 0xffffff);
-        fr.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
-        GlStateManager.popMatrix();
+        if (watermark) {
+            int watermark_y = 2;
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(2, 2, 0);
+            GlStateManager.scale(1.6, 1.6, 1);
+            GlStateManager.translate(-2, -2, 0);
+            fr.drawString(Client.name, 2, watermark_y, 0xffffff);
+            fr.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
+            GlStateManager.popMatrix();
+        }
 
+        // ArrayList
         if (Client.getModuleByName("arraylist").isToggled()) {
-
-            // ArrayList
             for (Module module : Client.modules) {
                 if (module.name.equalsIgnoreCase("arraylist")) {
                     for (Setting setting : module.settings) {
@@ -79,7 +96,7 @@ public class Hud {
 
             int count = 0;
             for (Module module : Client.modules) {
-                if (!module.isToggled() || module.name.equalsIgnoreCase("tabgui") || module.name.equalsIgnoreCase("arraylist")) continue;
+                if (!module.isToggled() || module.name.equalsIgnoreCase("tabgui") || module.name.equalsIgnoreCase("cheststealer") || module.name.equalsIgnoreCase("arraylist") || module.name.equalsIgnoreCase("hud")) continue;
 
                 double offset = count * (fr.FONT_HEIGHT + 6);
                 Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 4, offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, 0x90000000);

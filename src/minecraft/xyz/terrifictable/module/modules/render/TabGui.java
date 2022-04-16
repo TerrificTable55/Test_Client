@@ -76,8 +76,15 @@ public class TabGui extends Module {
             if (expanded) {
                 if (modules.size() == 0) { expanded = false; return; }
 
-                Gui.drawRect(60, 35, 57 + 59, 35 + modules.size() * 13, 0x90000000);
-                Gui.drawRect(63, 37 + moduleIndex * 12, 55 + 58, 34 + moduleIndex * 12 + 13, primaryColor); // ENTIRE TEXT / space on sides
+                int index_m = 0, maxLen_m = 0;
+                for (Module module : modules) {
+                    if (fr.getStringWidth(module.name) > maxLen_m)
+                        maxLen_m = fr.getStringWidth(module.name);
+                    index_m++;
+                }
+
+                Gui.drawRect(60, 35, 57 + maxLen_m + 12, 35 + modules.size() * 13, 0x90000000);
+                Gui.drawRect(63, 37 + moduleIndex * 12, 55 + maxLen_m + 12, 34 + moduleIndex * 12 + 13, primaryColor); // ENTIRE TEXT / space on sides
                 // Gui.drawRect(62 -2, 37 + moduleIndex * 12, 55 + 57 + 2, 34 + moduleIndex * 12 + 13, primaryColor); // ENTIRE TEXT / no space on sides
                 // Gui.drawRect(62, 37 + moduleIndex * 12, 64, 34 + moduleIndex * 12 + 13, primaryColor); // SMALL LINE
 
@@ -114,25 +121,25 @@ public class TabGui extends Module {
                         }
 
                         if (!module.settings.isEmpty()) {
-                            Gui.drawRect(60 + 56, 35, 57 + 57 + maxLen + 10, 35 + module.settings.size() * 13, 0x90000000);
-                            Gui.drawRect(62 + 57, 37 + module.settingIndex * 12, 55 + 56 + + maxLen + 11, 34 + module.settingIndex * 12 + 13, module.settings.get(module.settingIndex).focused ? secondaryColor : primaryColor); // ENTIRE TEXT / space on sides
-                            // Gui.drawRect(62 + 57 - 2, 37 + module.settingIndex * 12, 55 + 57 + 57 + 2, 34 + module.settingIndex * 12 + 13, primaryColor); // ENTIRE TEXT / no space on sides
-                            // Gui.drawRect(62, 37 + moduleIndex * 12, 64, 34 + moduleIndex * 12 + 13, primaryColor); // SMALL LINE
+                            Gui.drawRect(60 + maxLen_m + 9, 35, 57 + 24 + maxLen_m + maxLen - 2, 35 + module.settings.size() * 13, 0x90000000);
+                            Gui.drawRect(62 + maxLen_m + 9, 37 + module.settingIndex * 12, 55 + 24 + maxLen_m + maxLen - 2, 34 + module.settingIndex * 12 + 13, module.settings.get(module.settingIndex).focused ? secondaryColor : primaryColor); // ENTIRE TEXT / space on sides
+                            // Gui.drawRect(60 + maxLen_m + 9, 35, module.settingIndex * 12, 55 + 57 + 57 + 2, 34 + module.settingIndex * 12 + 13, primaryColor); // ENTIRE TEXT / no space on sides
+                            // Gui.drawRect(62 + maxLen_m + 12, 37, module.settingIndex * 12, 64 + 34 + module.settingIndex * 12 + 13, primaryColor); // SMALL LINE
 
                             index = 0;
                             for (Setting setting : module.settings) {
                                 if (setting instanceof BooleanSetting) {
                                     BooleanSetting bool = (BooleanSetting) setting;
-                                    fr.drawString(setting.name + ": " + (bool.enabled ? "on" : "off"), 65 + 55.5f, 38 + (index * 12), -1);
+                                    fr.drawString(setting.name + ": " + (bool.enabled ? "on" : "off"), 65 + maxLen_m + 9f, 38 + (index * 12), -1);
                                 } else if (setting instanceof NumberSetting) {
                                     NumberSetting number = (NumberSetting) setting;
-                                    fr.drawString(setting.name + ": " + number.getValue(), 65 + 55.5f, 38 + (index * 12), -1);
+                                    fr.drawString(setting.name + ": " + number.getValue(), 65 + maxLen_m + 9f, 38 + (index * 12), -1);
                                 } else if (setting instanceof ModeSetting) {
                                     ModeSetting mode = (ModeSetting) setting;
-                                    fr.drawString(setting.name + ": " + mode.getMode(), 65 + 55.5f, 38 + (index * 12), -1);
+                                    fr.drawString(setting.name + ": " + mode.getMode(), 65 + maxLen_m + 9f, 38 + (index * 12), -1);
                                 } else if (setting instanceof KeybindSetting) {
                                     KeybindSetting keyBind = (KeybindSetting) setting;
-                                    fr.drawString(setting.name + ": " + Keyboard.getKeyName(keyBind.code), 65 + 55.5f, 38 + (index * 12), -1);
+                                    fr.drawString(setting.name + ": " + Keyboard.getKeyName(keyBind.code), 65 + maxLen_m + 9f, 38 + (index * 12), -1);
                                 }
                                 index++;
                             }

@@ -23,6 +23,7 @@ public class CommandManager {
         addCommand(new Modules());
         addCommand(new Info());
         addCommand(new Say());
+        addCommand(new Prefix());
     }
 
     public void addCommand(Command command) {

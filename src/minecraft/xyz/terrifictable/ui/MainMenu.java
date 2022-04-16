@@ -16,7 +16,7 @@ public class MainMenu extends GuiScreen {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        mc.getTextureManager().bindTexture(new ResourceLocation("test/background.jpg"));
+        mc.getTextureManager().bindTexture(new ResourceLocation("test/galaxy.jpg"));
         drawModalRectWithCustomSizedTexture(0, 0 , 0, 0, this.width, this.height, this.width, this.height);
 
         drawGradientRect(0, height - 100, width, height, 0x00000000, 0xff000000);

@@ -31,6 +31,7 @@ public class Module {
 
     public void onEnable() {}
     public void onDisable() {}
+    public void onUpdate() {}
     public void onEvent(Event event) {}
 
     public void addSettings(Setting... settings) {

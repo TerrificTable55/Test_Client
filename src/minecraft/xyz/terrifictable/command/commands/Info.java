@@ -11,6 +11,6 @@ public class Info extends Command {
 
     @Override
     public void onCommand(String[] args, String command) {
-        Client.addChatmessage("\u00A7a" + Client.name + " \u00A7e" + Client.version + "\u00A7f by " + Client.author);
+        Client.addChatmessage("\u00A7a" + Client.name + " \u00A7ev" + Client.version + "\u00A7f by " + Client.author);
     }
 }

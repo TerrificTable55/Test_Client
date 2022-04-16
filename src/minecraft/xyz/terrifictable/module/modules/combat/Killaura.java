@@ -2,6 +2,9 @@ package xyz.terrifictable.module.modules.combat;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0APacketAnimation;
@@ -24,10 +27,13 @@ public class Killaura extends Module {
     public NumberSetting range = new NumberSetting("Range", 4, 1, 6, .1);
     public NumberSetting cps = new NumberSetting("CPS", 10, 1, 20, 1);
     public BooleanSetting swing = new BooleanSetting("Swing", true);
+    public BooleanSetting targetPlayer = new BooleanSetting("Players", true);
+    public BooleanSetting targetMobs = new BooleanSetting("Mobs", true);
+    public BooleanSetting targetAnimals = new BooleanSetting("Animals", true);
 
     public Killaura() {
         super("Killaura", Keyboard.KEY_K, Category.COMBAT);
-        this.addSettings(range, cps, swing);
+        this.addSettings(range, cps , targetPlayer, targetMobs, targetAnimals, swing);
     }
 
     public void onEnable() {
@@ -45,14 +51,24 @@ public class Killaura extends Module {
             List<Entity> targets = mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
             targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer && !entity.isDead).collect(Collectors.toList()); // && entity.getHealth() > 0
             targets.sort(Comparator.comparingDouble(entity -> ((Entity)entity).getDistanceToEntity(mc.thePlayer)));
+            List<Entity> newtargets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer && !entity.isDead).collect(Collectors.toList());
+            newtargets.sort(Comparator.comparingDouble(entity -> ((Entity) entity).getDistanceToEntity(mc.thePlayer)));
 
-            // targets = targets.stream().filter(EntityPlayer.class::isInstance).collect(Collectors.toList());      // PLAYERS
-            // targets = targets.stream().filter(EntityAnimal.class::isInstance).collect(Collectors.toList());      // ANIMALS
-            // targets = targets.stream().filter(EntityMob.class::isInstance).collect(Collectors.toList());         // MOBS
-            // targets = targets.stream().filter(EntityVillager.class::isInstance).collect(Collectors.toList());    // VILLAGER
+            if (targetAnimals.isEnabled() && targetMobs.isEnabled() && targetMobs.isEnabled()) {
+            } else {
+                if (!targetPlayer.isEnabled()) {
+                    newtargets.removeAll(targets.stream().filter(EntityPlayer.class::isInstance).collect(Collectors.toList()));   // PLAYERS
+                }
+                if (!targetAnimals.isEnabled()) {
+                    newtargets.removeAll(targets.stream().filter(EntityAnimal.class::isInstance).collect(Collectors.toList()));      // ANIMALS
+                }
+                if (!targetMobs.isEnabled()) {
+                    newtargets.removeAll(targets.stream().filter(EntityMob.class::isInstance).collect(Collectors.toList()));         // MOBS
+                }
+            }
 
-            if (!targets.isEmpty()) {
-                Entity target = targets.get(0);
+            if (!newtargets.isEmpty()) {
+                Entity target = newtargets.get(0);
 
                 // ClientSide
                 // mc.thePlayer.rotationYaw = (getRotations(target)[0]);
