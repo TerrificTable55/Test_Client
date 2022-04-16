@@ -3,15 +3,19 @@ package xyz.terrifictable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.lwjgl.opengl.Display;
-import tv.twitch.chat.ChatRawMessage;
 import xyz.terrifictable.command.CommandManager;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.events.listeners.EventChat;
 import xyz.terrifictable.events.listeners.EventKey;
 import xyz.terrifictable.module.Module;
+import xyz.terrifictable.module.ModuleManager;
+import xyz.terrifictable.module.modules.combat.FastBow;
 import xyz.terrifictable.module.modules.combat.Killaura;
+import xyz.terrifictable.module.modules.movement.BHop;
 import xyz.terrifictable.module.modules.movement.Fly;
 import xyz.terrifictable.module.modules.movement.Sprint;
+import xyz.terrifictable.module.modules.player.ChestStealer;
+import xyz.terrifictable.module.modules.player.FakePlayer;
 import xyz.terrifictable.module.modules.player.NoFall;
 import xyz.terrifictable.module.modules.render.Fulbright;
 import xyz.terrifictable.module.modules.render.TabGui;
@@ -25,11 +29,12 @@ public class Client {
 
     public static String author = "TerrificTable";
     public static String name = "Test";
-    public static String version = "1";
+    public static String version = "1.1";
     public static String prefix = ">";
 
     public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
     public static CommandManager commandManager = new CommandManager();
+    public static ModuleManager moduleManager = new ModuleManager();
     public static Hud hud = new Hud();
 
     public static void startup() {
@@ -42,6 +47,11 @@ public class Client {
         addModule(new TabGui());
         addModule(new Killaura());
         addModule(new xyz.terrifictable.module.modules.render.ArrayList());
+        addModule(new xyz.terrifictable.module.modules.render.Hud());
+        addModule(new FastBow());
+        addModule(new BHop());
+        addModule(new ChestStealer());
+        addModule(new FakePlayer());
     }
 
     public static void addModule(Module module) {
