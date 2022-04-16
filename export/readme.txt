@@ -13,5 +13,5 @@ Roaming\.minecraft
 !!! THE FOLDER HAS THE HAVE THE SAME NAME AS .json AND .jar FILE !!!
 just create a new minecraft version thingy in the launcher and select "tutorial" as the version and it should work
 
-oh yea heres the link:             https://anonfiles.com/P7b5Y6W3xd/test_jar
+oh yea heres the link:             https://anonfiles.com/Lef9Y8Wdx3/test_jar
 and the json file should be here:  https://anonfiles.com/f0eaY3W0xb/test_json
