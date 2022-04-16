@@ -42,20 +42,20 @@ ESP           |
 <details align="center">
   <summary>Images V1.1</summary>
   ## Version 1.1
-  Modules      | Commands
-  -------------|---------
-  Fly          | Bind
-  Sprint       | Info
-  Fullbright   | Commands
-  NoFall       | Modules
-  TabGui       | Prefix
-  Killaura     | Say
-  ArrayList    | Toggle
-  Hud          |
-  FastBow      |
-  BHop         |
-  ChestStealer |
-  FakePlayer   |
+  Modules      | Commands<br>
+  -------------|---------<br>
+  Fly          | Bind<br>
+  Sprint       | Info<br>
+  Fullbright   | Commands<br>
+  NoFall       | Modules<br>
+  TabGui       | Prefix<br>
+  Killaura     | Say<br>
+  ArrayList    | Toggle<br>
+  Hud          |<br>
+  FastBow      |<br>
+  BHop         |<br>
+  ChestStealer |<br>
+  FakePlayer   |<br>
   <br>
   <img src="https://cdn.discordapp.com/attachments/944354446337507358/964676159541502032/unknown.png" /><br>
   <img src="https://cdn.discordapp.com/attachments/944354446337507358/964677018883092490/unknown.png" />
