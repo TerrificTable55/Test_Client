@@ -41,7 +41,7 @@ ESP           |
 
 <details align="center">
   <summary>Images V1.1</summary>
-  ## Version 1.1
+  Version 1.1<br>
   Modules      | Commands<br>
   -------------|---------<br>
   Fly          | Bind<br>
