@@ -31,11 +31,13 @@ Hud           |
 ESP           |
 <br>
 
-<details align="center">
+<!-- <details align="center">
   <summary>Images V1.2</summary>
-  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png" /><br>
-  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png" />
-</details>
+</details> -->
+
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png" /><br>
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png" />
+
 <details align="center">
   <summary>Images V1.1</summary>
   ## Version 1.1
@@ -54,6 +56,6 @@ ESP           |
   ChestStealer |
   FakePlayer   |
   <br>
-  ![MainMenu](https://cdn.discordapp.com/attachments/944354446337507358/964676159541502032/unknown.png)<br>
-  ![Hud](https://cdn.discordapp.com/attachments/944354446337507358/964677018883092490/unknown.png)
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964676159541502032/unknown.png" /><br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964677018883092490/unknown.png" />
 </details>
