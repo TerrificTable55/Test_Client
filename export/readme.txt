@@ -20,5 +20,5 @@ JAR:      https://anonfiles.com/Lef9Y8Wdx3/test_jar
 JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.1
-JAR:      https://anonfiles.com/j60dd8X9x6/test_jar
+JAR:      https://anonfiles.com/Jb28d4X2x1/test_jar
 JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
