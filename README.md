@@ -33,8 +33,8 @@ ESP           |
 
 <details align="center">
   <summary>Images V1.2</summary>
-  ![MainMenu](https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png)<br>
-  ![Hud](https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png)
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png" /><br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png" />
 </details>
 <details align="center">
   <summary>Images V1.1</summary>
