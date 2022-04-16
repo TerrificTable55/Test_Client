@@ -32,6 +32,8 @@ public class Hud {
         ScaledResolution sr = new ScaledResolution(mc);
         FontRenderer fr = mc.fontRendererObj;
 
+        if (mc.gameSettings.showDebugInfo) return;
+
         Client.modules.sort(Comparator.comparingInt(m ->
                 fr.getStringWidth(((Module)m).name))
                 .reversed()

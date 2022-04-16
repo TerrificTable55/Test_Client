@@ -4,9 +4,10 @@ import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import xyz.terrifictable.Client;
+import xyz.terrifictable.alt.GuiAltManager;
 
 public class MainMenu extends GuiScreen {
-    private static final String[] buttons = {"Singleplayer", "Multiplayer", "Settings", "Language", "Quit"};
+    private static final String[] buttons = {"Singleplayer", "Multiplayer", "AltManager", "Settings", "Quit"};
 
     public MainMenu() {
     }
@@ -58,8 +59,8 @@ public class MainMenu extends GuiScreen {
                     case "Settings":
                         mc.displayGuiScreen(new GuiOptions(this, mc.gameSettings));
                         break;
-                    case "Language":
-                        mc.displayGuiScreen(new GuiLanguage(this, mc.gameSettings, mc.getLanguageManager()));
+                    case "AltManager":
+                        mc.displayGuiScreen(new GuiAltManager());
                         break;
                     case "Quit":
                         mc.shutdown();
@@ -73,6 +74,5 @@ public class MainMenu extends GuiScreen {
     }
 
     public void onGuiClosed() {
-
     }
 }

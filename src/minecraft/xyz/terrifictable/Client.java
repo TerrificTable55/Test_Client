@@ -3,22 +3,22 @@ package xyz.terrifictable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.lwjgl.opengl.Display;
+import xyz.terrifictable.alt.AltManager;
 import xyz.terrifictable.command.CommandManager;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.events.listeners.EventChat;
 import xyz.terrifictable.events.listeners.EventKey;
 import xyz.terrifictable.module.Module;
 import xyz.terrifictable.module.ModuleManager;
+import xyz.terrifictable.module.modules.combat.AimAssist;
 import xyz.terrifictable.module.modules.combat.FastBow;
 import xyz.terrifictable.module.modules.combat.Killaura;
-import xyz.terrifictable.module.modules.movement.BHop;
-import xyz.terrifictable.module.modules.movement.Fly;
-import xyz.terrifictable.module.modules.movement.Sprint;
+import xyz.terrifictable.module.modules.movement.*;
 import xyz.terrifictable.module.modules.player.ChestStealer;
 import xyz.terrifictable.module.modules.player.FakePlayer;
 import xyz.terrifictable.module.modules.player.NoFall;
-import xyz.terrifictable.module.modules.render.Fulbright;
-import xyz.terrifictable.module.modules.render.TabGui;
+import xyz.terrifictable.module.modules.player.autoSell;
+import xyz.terrifictable.module.modules.render.*;
 import xyz.terrifictable.ui.Hud;
 
 import java.util.ArrayList;
@@ -29,29 +29,48 @@ public class Client {
 
     public static String author = "TerrificTable";
     public static String name = "Test";
-    public static String version = "1.1";
+    public static String version = "1.2";
     public static String prefix = ">";
 
     public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
     public static CommandManager commandManager = new CommandManager();
     public static ModuleManager moduleManager = new ModuleManager();
+    public static AltManager altManager = new AltManager();
     public static Hud hud = new Hud();
 
     public static void startup() {
         Display.setTitle(name + " v" +version);
 
-        addModule(new Fly());
-        addModule(new Sprint());
-        addModule(new Fulbright());
-        addModule(new NoFall());
-        addModule(new TabGui());
+        // Combat
+        addModule(new AimAssist());
         addModule(new Killaura());
-        addModule(new xyz.terrifictable.module.modules.render.ArrayList());
-        addModule(new xyz.terrifictable.module.modules.render.Hud());
         addModule(new FastBow());
+
+        // Movement
+        addModule(new AutoWalk());
+        addModule(new Jetpack());
+        addModule(new Dolphin());
+        addModule(new Parkour());
+        addModule(new Sprint());
+        addModule(new Spider());
+        addModule(new Glide());
+        addModule(new Sneak());
+        addModule(new Speed());
+        addModule(new Step());
         addModule(new BHop());
+        addModule(new Fly());
+
+        // Player
         addModule(new ChestStealer());
         addModule(new FakePlayer());
+        addModule(new NoFall());
+
+        // Render
+        addModule(new xyz.terrifictable.module.modules.render.ArrayList());
+        addModule(new xyz.terrifictable.module.modules.render.Hud());
+        addModule(new Fulbright());
+        addModule(new TabGui());
+        addModule(new ESP());
     }
 
     public static void addModule(Module module) {

@@ -5,42 +5,28 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0APacketAnimation;
-import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.events.listeners.EventMotion;
 import xyz.terrifictable.module.Module;
 import xyz.terrifictable.setting.settings.BooleanSetting;
-import xyz.terrifictable.setting.settings.ModeSetting;
 import xyz.terrifictable.setting.settings.NumberSetting;
 import xyz.terrifictable.util.RotationUtil;
 import xyz.terrifictable.util.Timer;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Killaura extends Module {
+public class AimAssist extends Module {
     public Timer timer = new Timer();
     public NumberSetting range = new NumberSetting("Range", 4, 1, 6, .1);
-    public NumberSetting cps = new NumberSetting("CPS", 10, 1, 20, 1);
-    public BooleanSetting swing = new BooleanSetting("Swing", true);
     public BooleanSetting targetPlayer = new BooleanSetting("Players", true);
     public BooleanSetting targetMobs = new BooleanSetting("Mobs", true);
     public BooleanSetting targetAnimals = new BooleanSetting("Animals", true);
 
-    public Killaura() {
-        super("Killaura", Keyboard.KEY_K, Category.COMBAT);
-        this.addSettings(range, cps , targetPlayer, targetMobs, targetAnimals, swing);
-    }
-
-    public void onEnable() {
-    }
-
-    public void onDisable() {
+    public AimAssist() {
+        super("AimAssist", 0, Category.COMBAT);
+        this.addSettings(range, targetPlayer, targetMobs, targetAnimals);
     }
 
     public void onEvent(Event event) {
@@ -72,21 +58,14 @@ public class Killaura extends Module {
                 Entity target = newtargets.get(0);
 
                 // ClientSide
-                // mc.thePlayer.rotationYaw = (getRotations(target)[0]);
-                // mc.thePlayer.rotationPitch = (getRotations(target)[1]);
+                mc.thePlayer.rotationYaw = (RotationUtil.getRotations(target)[0]);
+                mc.thePlayer.rotationPitch = (RotationUtil.getRotations(target)[1]);
 
                 // ServerSide
                 eventMotion.setYaw(RotationUtil.getRotations(target)[0]);
                 eventMotion.setPitch(RotationUtil.getRotations(target)[1]);
-
-                if (timer.hasTimeElapsed((long) (1000 / cps.getValue()), true)) {
-                    if (swing.isEnabled())
-                        mc.thePlayer.swingItem();
-                    else
-                        mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
-                    mc.thePlayer.sendQueue.addToSendQueue(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
-                }
             }
         }
+
     }
 }
