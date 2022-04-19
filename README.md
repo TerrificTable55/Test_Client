@@ -2,10 +2,10 @@
 Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br>
 
 ## Version 1.3
-added some player modules and added a new category: Client
+added simple ClickGui and scaffold<br>
 
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/965947215912771644/unknown.png" /><br>
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/965947580066451456/unknown.png" /><br>
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/966125002862776390/unknown.png" />
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/966125168571342918/unknown.png" />
 
 Modules       | Commands
 --------------|---------
@@ -17,10 +17,11 @@ FakePlayer    | Bind
 ArrayList     | Info
 AimAssist     | Xray
 Fulbright     | Say
-Killaura      | 
+Killaura      |
 AutoWalk      | 
-AutoMine      | 
-FastBow       | 
+AutoMine      |
+ClickGui      |
+FastBow       |
 Jetpack       |
 Dolphin       |
 Parkour       |
@@ -38,11 +39,46 @@ BHop          |
 Fly           |
 Hud           |
 ESP           |
+  
 
 
-<!-- <details align="center">
+<details align="center">
   <summary>Images V1.3</summary>
-</details> -->
+  Modules       | Commands<br>
+  --------------|---------<br>
+  ChestStealer  | Commands<br>
+  AutoRespawn   | Modules<br>
+  AntiCobweb    | Toggle<br>
+  FastLadder    | Prefix<br>
+  FakePlayer    | Bind<br>
+  ArrayList     | Info<br>
+  AimAssist     | Xray<br>
+  Fulbright     | Say<br>
+  Killaura      |<br>
+  AutoWalk      |<br> 
+  AutoMine      |<br>
+  FastBow       |<br>
+  Jetpack       |<br>
+  Dolphin       |<br>
+  Parkour       |<br>
+  AntiAfk       |<br>
+  Sprint        |<br>
+  Spider        |<br>
+  NoFall        |<br>
+  TabGui        |<br>
+  Glide         |<br>
+  Sneak         |<br>
+  Speed         |<br>
+  Xray          |<br>
+  Step          |<br>
+  BHop          |<br>
+  Fly           |<br>
+  Hud           |<br>
+  ESP           |<br>
+  <br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/965947215912771644/unknown.png" /><br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/965947580066451456/unknown.png" />
+</details>
 
 <details align="center">
   <summary>Images V1.2</summary>
