@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.alt.GuiAltManager;
+import xyz.terrifictable.setting.settings.ModeSetting;
 
 public class MainMenu extends GuiScreen {
     private static final String[] buttons = {"Singleplayer", "Multiplayer", "AltManager", "Settings", "Quit"};
@@ -17,7 +18,19 @@ public class MainMenu extends GuiScreen {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        mc.getTextureManager().bindTexture(new ResourceLocation("test/galaxy.jpg"));
+        assert Client.getModuleByName("MainMenu") != null;
+        /* if (Client.getModuleByName("MainMenu").settings.get(0).name.equalsIgnoreCase("image")) {
+            ModeSetting image = (ModeSetting) Client.getModuleByName("MainMenu").settings.get(0);
+
+            if (image.getMode().equalsIgnoreCase("galaxy"))
+                mc.getTextureManager().bindTexture(new ResourceLocation("test/galaxy.jpg"));
+            if (image.getMode().equalsIgnoreCase("Mountain"))
+                mc.getTextureManager().bindTexture(new ResourceLocation("test/background.jpg"));
+            if (image.getMode().equalsIgnoreCase("Snowy Mountain"))
+                mc.getTextureManager().bindTexture(new ResourceLocation("test/snowy_mountain.jpg"));
+        } */
+
+        mc.getTextureManager().bindTexture(new ResourceLocation("test/snowy_mountain.jpg"));
         drawModalRectWithCustomSizedTexture(0, 0 , 0, 0, this.width, this.height, this.width, this.height);
 
         drawGradientRect(0, height - 100, width, height, 0x00000000, 0xff000000);
@@ -34,12 +47,16 @@ public class MainMenu extends GuiScreen {
             count++;
         }
 
+        // CLIENT NAME
         GlStateManager.pushMatrix();
         GlStateManager.translate(width / 2F, height / 2F, 0);
         GlStateManager.scale(3, 3, 1);
         GlStateManager.translate(-(width / 2F), -(height / 2F), 0);
-        this.drawCenteredString(mc.fontRendererObj, Client.name + " v" + Client.version, width / 2F, height / 2F - mc.fontRendererObj.FONT_HEIGHT / 2F, -1);
+        this.drawCenteredString(mc.fontRendererObj, Client.name + " v" + Client.version, (width / 2F) - 2, height / 2F - mc.fontRendererObj.FONT_HEIGHT / 2F, -1);
         GlStateManager.popMatrix();
+
+        // AUTHOR
+        this.drawCenteredString(mc.fontRendererObj, "by " + Client.author, (width / 2F) + 26, (height / 2F + mc.fontRendererObj.FONT_HEIGHT) + 6, -1);
     }
 
     public void mouseClicked(int mouseX, int mouseY, int button) {

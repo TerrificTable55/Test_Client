@@ -10,14 +10,15 @@ import xyz.terrifictable.events.listeners.EventChat;
 import xyz.terrifictable.events.listeners.EventKey;
 import xyz.terrifictable.module.Module;
 import xyz.terrifictable.module.ModuleManager;
+import xyz.terrifictable.module.modules.client.ClickGuiModule;
+import xyz.terrifictable.module.modules.client.ClickGuiRender;
+import xyz.terrifictable.module.modules.client.ModuleList;
+import xyz.terrifictable.module.modules.client.TabGui;
 import xyz.terrifictable.module.modules.combat.AimAssist;
 import xyz.terrifictable.module.modules.combat.FastBow;
 import xyz.terrifictable.module.modules.combat.Killaura;
 import xyz.terrifictable.module.modules.movement.*;
-import xyz.terrifictable.module.modules.player.ChestStealer;
-import xyz.terrifictable.module.modules.player.FakePlayer;
-import xyz.terrifictable.module.modules.player.NoFall;
-import xyz.terrifictable.module.modules.player.autoSell;
+import xyz.terrifictable.module.modules.player.*;
 import xyz.terrifictable.module.modules.render.*;
 import xyz.terrifictable.ui.Hud;
 
@@ -29,17 +30,23 @@ public class Client {
 
     public static String author = "TerrificTable";
     public static String name = "Test";
-    public static String version = "1.2";
+    public static String version = "1.4";
     public static String prefix = ">";
 
     public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
     public static CommandManager commandManager = new CommandManager();
     public static ModuleManager moduleManager = new ModuleManager();
+    public static ClickGuiRender clickgui = new ClickGuiRender();
     public static AltManager altManager = new AltManager();
     public static Hud hud = new Hud();
 
     public static void startup() {
         Display.setTitle(name + " v" +version);
+
+        // Client
+        addModule(new ClickGuiModule());
+        // addModule(new MainMenu());
+        addModule(new TabGui());
 
         // Combat
         addModule(new AimAssist());
@@ -62,14 +69,20 @@ public class Client {
 
         // Player
         addModule(new ChestStealer());
+        addModule(new AutoRespawn());
+        addModule(new AntiCobweb());
         addModule(new FakePlayer());
+        addModule(new FastLadder());
+        addModule(new AutoMine());
+        addModule(new Scaffold());
+        addModule(new AntiAfk());
         addModule(new NoFall());
 
         // Render
-        addModule(new xyz.terrifictable.module.modules.render.ArrayList());
-        addModule(new xyz.terrifictable.module.modules.render.Hud());
+        addModule(new xyz.terrifictable.module.modules.client.Hud());
+        addModule(new ModuleList());
         addModule(new Fulbright());
-        addModule(new TabGui());
+        addModule(new Xray());
         addModule(new ESP());
     }
 
@@ -112,9 +125,11 @@ public class Client {
         }
         return null;
     }
-    public static void addChatmessage(String message) {
+    public static void addChatMessage(String message) {
         message = "\u00A77[\u00A7c" + Client.name + "\u00A77]  \u00A7f" + message;
-
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(message));
+    }
+    public static ClickGuiRender getClickgui() {
+        return clickgui;
     }
 }

@@ -1,6 +1,8 @@
 package xyz.terrifictable.module;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.Packet;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.setting.Setting;
 import xyz.terrifictable.setting.settings.KeybindSetting;
@@ -62,12 +64,20 @@ public class Module {
         COMBAT("Combat"),
         MOVEMENT("Movement"),
         PLAYER("Player"),
-        RENDER("Render");
+        RENDER("Render"),
+        CLIENT("Client");
 
         public String name;
 
         Category(String name) {
             this.name = name;
         }
+    }
+    public static List<Category> getCategorys() {
+        return Arrays.asList(Category.values());
+    }
+    @SuppressWarnings("rawtypes")
+    protected void sendPacket(Packet packet) {
+        mc.thePlayer.sendQueue.addToSendQueue(packet);
     }
 }

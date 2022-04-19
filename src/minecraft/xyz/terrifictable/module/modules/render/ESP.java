@@ -1,7 +1,7 @@
 package xyz.terrifictable.module.modules.render;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.item.EntityMinecartChest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,8 +40,13 @@ public class ESP extends Module {
                     ChestESPUtil.blockChestESP(((TileEntityChest)o).getPos(), 2.0f, color, color);
                     // ChestESPUtil.blockChestESP(((TileEntityChest)o).getPos());
                 }
+            } for (Object o : mc.theWorld.loadedEntityList) {
+                if (o instanceof EntityMinecartChest) {
+                    ChestESPUtil.blockChestESP(((EntityMinecartChest)o).getPosition(), 2.0f, color, color);
+                }
             }
         }
+
         // PLAYER ESP
         if (playerESP.isEnabled()) {
             for (Object p : mc.theWorld.loadedEntityList) {

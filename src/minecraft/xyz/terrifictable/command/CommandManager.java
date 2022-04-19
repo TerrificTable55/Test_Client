@@ -17,13 +17,14 @@ public class CommandManager {
     }
 
     public void setup() {
-        addCommand(new Toggle());
-        addCommand(new Bind());
+        addCommand(new addXrayBlock());
         addCommand(new Commands());
         addCommand(new Modules());
+        addCommand(new Prefix());
+        addCommand(new Toggle());
+        addCommand(new Bind());
         addCommand(new Info());
         addCommand(new Say());
-        addCommand(new Prefix());
     }
 
     public void addCommand(Command command) {
@@ -50,7 +51,7 @@ public class CommandManager {
                 }
             }
             if (!found)
-                Client.addChatmessage("Command '\u00A7b" + commandName + "\u00A7f' not found try \u00A76" + Client.prefix + "commands \u00A7ffor a list of all commands");
+                Client.addChatMessage("Command '\u00A7b" + commandName + "\u00A7f' not found try \u00A76" + Client.prefix + "commands \u00A7ffor a list of all commands");
         }
     }
 }

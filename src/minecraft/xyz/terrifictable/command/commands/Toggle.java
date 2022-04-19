@@ -21,7 +21,7 @@ public class Toggle extends Command {
                 if (module.name.equalsIgnoreCase(moduleName)) {
                     module.toggle();
 
-                    Client.addChatmessage("\u00A7b" + module.name + "\u00A7f Toggled " + (module.isToggled() ? "\u00A72On" : "\u00A74Off"));
+                    Client.addChatMessage("\u00A7b" + module.name + "\u00A7f Toggled " + (module.isToggled() ? "\u00A72On" : "\u00A74Off"));
 
                     found = true;
                     break;
@@ -29,7 +29,7 @@ public class Toggle extends Command {
             }
 
             if (!found) {
-                Client.addChatmessage("Module \u00A7b'" + args[0] + "'\u00A7f not found, try \u00A76" + Client.prefix + "modules \u00A7ffor a list of modules");
+                Client.addChatMessage("Module \u00A7b'" + args[0] + "'\u00A7f not found, try \u00A76" + Client.prefix + "modules \u00A7ffor a list of modules");
             }
         }
     }

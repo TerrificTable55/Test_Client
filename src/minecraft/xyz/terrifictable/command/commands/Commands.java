@@ -18,6 +18,6 @@ public class Commands extends Command {
             commands.append("\u00A7c").append(command.name).append("\u00A7f, ");
         }
 
-        Client.addChatmessage("Commands: " + commands);
+        Client.addChatMessage("Commands: " + commands);
     }
 }
