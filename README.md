@@ -1,30 +1,30 @@
 # Test_Client
 Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br>
 
-## Version 1.2
-added a lot for example: FakePlayer, AimAssist, AltManager, ...
+## Version 1.3
+added some player modules and added a new category: Client
 
-
-<!-- <details align="center">
-  <summary>Images V1.2</summary>
-</details> -->
-
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png" /><br>
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png" />
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/965947215912771644/unknown.png" /><br>
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/965947580066451456/unknown.png" /><br>
 
 Modules       | Commands
 --------------|---------
 ChestStealer  | Commands
-FakePlayer    | Modules
-ArrayList     | Toggle
-AimAssist     | Prefix
-Fulbright     | Bind
-Killaura      | Info
-AutoWalk      | Say
-FastBow       |
+AutoRespawn   | Modules
+AntiCobweb    | Toggle
+FastLadder    | Prefix
+FakePlayer    | Bind
+ArrayList     | Info
+AimAssist     | Xray
+Fulbright     | Say
+Killaura      | 
+AutoWalk      | 
+AutoMine      | 
+FastBow       | 
 Jetpack       |
 Dolphin       |
 Parkour       |
+AntiAfk       |
 Sprint        |
 Spider        |
 NoFall        |
@@ -32,12 +32,49 @@ TabGui        |
 Glide         |
 Sneak         |
 Speed         |
+Xray          |
 Step          |
 BHop          |
 Fly           |
 Hud           |
 ESP           |
-<br>
+
+
+<!-- <details align="center">
+  <summary>Images V1.3</summary>
+</details> -->
+
+<details align="center">
+  <summary>Images V1.2</summary>
+  Modules       | Commands<br>
+  --------------|---------<br>
+  ChestStealer  | Commands<br>
+  FakePlayer    | Modules<br>
+  ArrayList     | Toggle<br>
+  AimAssist     | Prefix<br>
+  Fulbright     | Bind<br>
+  Killaura      | Info<br>
+  AutoWalk      | Say<br>
+  FastBow       |<br>
+  Jetpack       |<br>
+  Dolphin       |<br>
+  Parkour       |<br>
+  Sprint        |<br>
+  Spider        |<br>
+  NoFall        |<br>
+  TabGui        |<br>
+  Glide         |<br>
+  Sneak         |<br>
+  Speed         |<br>
+  Step          |<br>
+  BHop          |<br>
+  Fly           |<br>
+  Hud           |<br>
+  ESP           |<br>
+  <br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874657876545586/unknown.png" /><br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/964874294884704346/unknown.png" />
+</details>
 
 <details align="center">
   <summary>Images V1.1</summary>
