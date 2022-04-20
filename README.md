@@ -1,6 +1,8 @@
 # Test_Client
 Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br>
 
+<a href="https://github.com/TerrificTable55/Test_Client/tree/main/export">Downloads</a>
+
 ## Version 1.3
 added simple ClickGui and scaffold<br>
 
