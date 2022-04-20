@@ -12,6 +12,6 @@ public class Prefix extends Command {
     @Override
     public void onCommand(String[] args, String command) {
         Client.prefix = args[0];
-        Client.addChatmessage("New Prefix: \u00A7a" + args[0]);
+        Client.addChatMessage("New Prefix: \u00A7a" + args[0]);
     }
 }

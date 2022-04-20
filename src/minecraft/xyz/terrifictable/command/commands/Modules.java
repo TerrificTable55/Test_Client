@@ -2,7 +2,6 @@ package xyz.terrifictable.command.commands;
 
 import xyz.terrifictable.Client;
 import xyz.terrifictable.command.Command;
-import xyz.terrifictable.command.CommandManager;
 import xyz.terrifictable.module.Module;
 
 public class Modules extends Command {
@@ -22,6 +21,6 @@ public class Modules extends Command {
             modules.append("\u00A7c").append(module.name).append("\u00A7f, ");
         }
 
-        Client.addChatmessage("Modules: " + modules);
+        Client.addChatMessage("Modules: " + modules);
     }
 }

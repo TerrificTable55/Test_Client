@@ -5,8 +5,6 @@ import xyz.terrifictable.Client;
 import xyz.terrifictable.command.Command;
 import xyz.terrifictable.module.Module;
 
-import java.util.Locale;
-
 public class Bind extends Command {
     public Bind() {
         super("bind", "Binds a key to a module", "", "b");
@@ -28,13 +26,13 @@ public class Bind extends Command {
                             module.keyCode.setKeyCode(Keyboard.getKeyIndex(keyName.toUpperCase()));
                             found = true;
 
-                            Client.addChatmessage(String.format("\u00A7b%s\u00A7f Bound to \u00A7a%s", module.name, keyName.toUpperCase()));
+                            Client.addChatMessage(String.format("\u00A7b%s\u00A7f Bound to \u00A7a%s", module.name, keyName.toUpperCase()));
                             break;
                         }
                     }
 
                     if (!found)
-                        Client.addChatmessage(String.format("Module \u00A7b'%s'\u00A7f not found, try \u00A76%smodules \u00A7ffor a list of modules", args[0], Client.prefix));
+                        Client.addChatMessage(String.format("Module \u00A7b'%s'\u00A7f not found, try \u00A76%smodules \u00A7ffor a list of modules", args[0], Client.prefix));
                 }
             } else if (args[0].equalsIgnoreCase("del")) {
                 String moduleName = args[1];
@@ -46,23 +44,23 @@ public class Bind extends Command {
                         module.keyCode.setKeyCode(0);
                         found = true;
 
-                        Client.addChatmessage("Successfully Unbound \u00A7b" + module.name);
+                        Client.addChatMessage("Successfully Unbound \u00A7b" + module.name);
                         break;
                     }
                 }
 
                 if (!found)
-                    Client.addChatmessage(String.format("Module \u00A7b'%s'\u00A7f not found, try \u00A76%smodules \u00A7ffor a list of modules", args[0], Client.prefix));
+                    Client.addChatMessage(String.format("Module \u00A7b'%s'\u00A7f not found, try \u00A76%smodules \u00A7ffor a list of modules", args[0], Client.prefix));
 
             } else if (args[0].equalsIgnoreCase("clear")) {
                 for (Module module : Client.modules) {
                     module.keyCode.setKeyCode(0);
                 }
 
-                Client.addChatmessage("Removed all Keybinds");
+                Client.addChatMessage("Removed all Keybinds");
             } else
-                Client.addChatmessage(this.getSyntax());
+                Client.addChatMessage(this.getSyntax());
         } else
-            Client.addChatmessage(this.getSyntax());
+            Client.addChatMessage(this.getSyntax());
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0APacketAnimation;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.events.listeners.EventMotion;
@@ -27,7 +28,7 @@ public class Killaura extends Module {
     public Timer timer = new Timer();
     public NumberSetting range = new NumberSetting("Range", 4, 1, 6, .1);
     public NumberSetting cps = new NumberSetting("CPS", 10, 1, 20, 1);
-    public BooleanSetting swing = new BooleanSetting("Swing", true);
+    public ModeSetting swing = new ModeSetting("Swing", "Normal", "Normal", "Silent");
     public BooleanSetting targetPlayer = new BooleanSetting("Players", true);
     public BooleanSetting targetMobs = new BooleanSetting("Mobs", true);
     public BooleanSetting targetAnimals = new BooleanSetting("Animals", true);
@@ -36,6 +37,8 @@ public class Killaura extends Module {
         super("Killaura", Keyboard.KEY_K, Category.COMBAT);
         this.addSettings(range, cps , targetPlayer, targetMobs, targetAnimals, swing);
     }
+
+
 
     public void onEnable() {
     }
@@ -80,10 +83,14 @@ public class Killaura extends Module {
                 eventMotion.setPitch(RotationUtil.getRotations(target)[1]);
 
                 if (timer.hasTimeElapsed((long) (1000 / cps.getValue()), true)) {
-                    if (swing.isEnabled())
-                        mc.thePlayer.swingItem();
-                    else
-                        mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
+                    switch (swing.getMode()) {
+                        case "Normal":
+                            mc.thePlayer.swingItem();
+                            break;
+                        case "Silent":
+                            mc.thePlayer.sendQueue.addToSendQueue(new C0APacketAnimation());
+                            break;
+                    }
                     mc.thePlayer.sendQueue.addToSendQueue(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
                 }
             }

@@ -41,10 +41,7 @@ public class Hud {
 
         for (Setting setting : Client.getModuleByName("hud").settings) {
             if (setting instanceof BooleanSetting) {
-                // Watermark
-                if (setting.name.equalsIgnoreCase("watermark")) {
-                    watermark = ((BooleanSetting) setting).isEnabled();
-                }
+
             }
             else if (setting instanceof NumberSetting) {
 
@@ -52,19 +49,6 @@ public class Hud {
             else if (setting instanceof ModeSetting) {
 
             }
-        }
-
-
-        // Watermark
-        if (watermark) {
-            int watermark_y = 2;
-            GlStateManager.pushMatrix();
-            GlStateManager.translate(2, 2, 0);
-            GlStateManager.scale(1.6, 1.6, 1);
-            GlStateManager.translate(-2, -2, 0);
-            fr.drawString(Client.name, 2, watermark_y, 0xffffff);
-            fr.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
-            GlStateManager.popMatrix();
         }
 
         // ArrayList
