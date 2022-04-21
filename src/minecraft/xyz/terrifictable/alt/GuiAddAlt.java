@@ -15,6 +15,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumChatFormatting;
 import xyz.terrifictable.Client;
+import xyz.terrifictable.ui.UiButton;
+import xyz.terrifictable.util.font.FontUtil;
 
 
 public class GuiAddAlt
@@ -47,14 +49,14 @@ extends GuiScreen {
         this.drawDefaultBackground();
         this.username.drawTextBox();
         this.password.drawTextBox();
-        this.drawCenteredString(this.fontRendererObj, "Add Alt", width / 2, 20, -1);
+        Client.fr.drawCenteredString("Add Alt", width / 2, 20, -1);
         if (this.username.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "Username / E-Mail", width / 2 - 96, 66, -7829368);
+            Client.fr.drawString("Username / E-Mail", width / 2 - 96, 66, -7829368);
         }
         if (this.password.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "Password", width / 2 - 96, 106, -7829368);
+            Client.fr.drawString("Password", width / 2 - 96, 106, -7829368);
         }
-        this.drawCenteredString(this.fontRendererObj, this.status, width / 2, 30, -1);
+        Client.fr.drawCenteredString(this.status, width / 2, 30, -1);
         super.drawScreen(i2, j2, f2);
     }
 
@@ -62,8 +64,8 @@ extends GuiScreen {
     public void initGui() {
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 92 + 12, "Login"));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, height / 4 + 116 + 12, "Back"));
+        this.buttonList.add(new UiButton(0, width / 2 - 100, height / 4 + 92 + 12, "Login"));
+        this.buttonList.add(new UiButton(1, width / 2 - 100, height / 4 + 116 + 12, "Back"));
         this.username = new GuiTextField(this.eventButton, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         this.password = new PasswordField(this.mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
     }

@@ -9,6 +9,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
+import xyz.terrifictable.Client;
+import xyz.terrifictable.ui.UiButton;
 
 public final class GuiAltLogin
 extends GuiScreen {
@@ -40,13 +42,13 @@ extends GuiScreen {
         this.drawDefaultBackground();
         this.username.drawTextBox();
         this.password.drawTextBox();
-        this.drawCenteredString(this.mc.fontRendererObj, "Alt Login", width / 2, 20, -1);
-        this.drawCenteredString(this.mc.fontRendererObj, this.thread == null ? (Object)((Object)EnumChatFormatting.GRAY) + "Idle..." : this.thread.getStatus(), width / 2, 29, -1);
+        Client.fr.drawCenteredString("Alt Login", width / 2, 20, -1);
+        Client.fr.drawCenteredString(this.thread == null ? (Object)((Object)EnumChatFormatting.GRAY) + "Idle..." : this.thread.getStatus(), width / 2, 29, -1);
         if (this.username.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "Username / E-Mail", width / 2 - 96, 66, -7829368);
+            Client.fr.drawString("Username / E-Mail", width / 2 - 96, 66, -7829368);
         }
         if (this.password.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "Password", width / 2 - 96, 106, -7829368);
+            Client.fr.drawString("Password", width / 2 - 96, 106, -7829368);
         }
         super.drawScreen(x2, y2, z2);
     }
@@ -54,8 +56,8 @@ extends GuiScreen {
     @Override
     public void initGui() {
         int var3 = height / 4 + 24;
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, var3 + 72 + 12, "Login"));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
+        this.buttonList.add(new UiButton(0, width / 2 - 100, var3 + 72 + 12, "Login"));
+        this.buttonList.add(new UiButton(1, width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
         this.username = new GuiTextField(var3, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         this.password = new PasswordField(this.mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
         this.username.setFocused(true);
@@ -108,4 +110,3 @@ extends GuiScreen {
         this.password.updateCursorCounter();
     }
 }
-

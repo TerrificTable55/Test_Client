@@ -9,6 +9,8 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumChatFormatting;
+import xyz.terrifictable.Client;
+import xyz.terrifictable.ui.UiButton;
 
 public class GuiRenameAlt
 extends GuiScreen {
@@ -39,23 +41,23 @@ extends GuiScreen {
     @Override
     public void drawScreen(int par1, int par2, float par3) {
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, "Edit Alt", width / 2, 10, -1);
-        this.drawCenteredString(this.fontRendererObj, this.status, width / 2, 20, -1);
+        Client.fr.drawCenteredString("Edit Alt", width / 2, 10, -1);
+        Client.fr.drawCenteredString(this.status, width / 2, 20, -1);
         this.nameField.drawTextBox();
         this.pwField.drawTextBox();
         if (this.nameField.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "New name", width / 2 - 96, 66, -7829368);
+            Client.fr.drawString("New name", width / 2 - 96, 66, -7829368);
         }
         if (this.pwField.getText().isEmpty()) {
-            this.drawString(this.mc.fontRendererObj, "New password", width / 2 - 96, 106, -7829368);
+            Client.fr.drawString("New password", width / 2 - 96, 106, -7829368);
         }
         super.drawScreen(par1, par2, par3);
     }
 
     @Override
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, width / 2 - 100, height / 4 + 92 + 12, "Edit"));
-        this.buttonList.add(new GuiButton(1, width / 2 - 100, height / 4 + 116 + 12, "Cancel"));
+        this.buttonList.add(new UiButton(0, width / 2 - 100, height / 4 + 92 + 12, "Edit"));
+        this.buttonList.add(new UiButton(1, width / 2 - 100, height / 4 + 116 + 12, "Cancel"));
         this.nameField = new GuiTextField(this.eventButton, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         this.pwField = new PasswordField(this.mc.fontRendererObj, width / 2 - 100, 100, 200, 20);
     }

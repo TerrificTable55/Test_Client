@@ -11,6 +11,7 @@ import net.minecraft.util.EnumChatFormatting;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.alt.theAltening.AlteningServiceType;
 import xyz.terrifictable.alt.theAltening.TheAlteningAuthentication;
+import xyz.terrifictable.ui.UiButton;
 
 public class GuiAltManager
 extends GuiScreen {
@@ -99,12 +100,11 @@ extends GuiScreen {
             }
         }
         this.drawDefaultBackground();
-        this.drawString(this.fontRendererObj, this.mc.getSession().getUsername(), 10, 10, -7829368);
-        FontRenderer fontRendererObj = this.fontRendererObj;
+        Client.fr.drawString(this.mc.getSession().getUsername(), 10, 10, -7829368);
         StringBuilder sb2 = new StringBuilder("Account Manager - ");
-       
-        this.drawCenteredString(fontRendererObj, sb2.append(AltManager.registry.size()).append(" alts").toString(), width / 2, 10, -1);
-        this.drawCenteredString(this.fontRendererObj, this.loginThread == null ? this.status : this.loginThread.getStatus(), width / 2, 20, -1);
+
+        Client.fr.drawCenteredString(sb2.append(AltManager.registry.size()).append(" alts").toString(), width / 2, 10, -1);
+        Client.fr.drawCenteredString(this.loginThread == null ? this.status : this.loginThread.getStatus(), width / 2, 20, -1);
         Gui.drawRect(50.0f, 33.0f, width - 50, height - 50, -16777216);
         GL11.glPushMatrix();
         this.prepareScissorBox(0.0f, 33.0f, width, height - 50);
@@ -128,8 +128,8 @@ extends GuiScreen {
             } else if (this.isMouseOverAlt(par1, par2, y2 - this.offset)) {
                 Gui.drawRect(52.0f, y2 - this.offset - 4, width - 52, y2 - this.offset + 20, -1);
             }
-            this.drawCenteredString(this.fontRendererObj, name, width / 2, y2 - this.offset, -1);
-            this.drawCenteredString(this.fontRendererObj, pass, width / 2, y2 - this.offset + 10, 5592405);
+            Client.fr.drawCenteredString(name, width / 2, y2 - this.offset, -1);
+            Client.fr.drawCenteredString(pass, width / 2, y2 - this.offset + 10, 5592405);
             y2 += 26;
         }
         GL11.glDisable(3089);
@@ -159,17 +159,17 @@ extends GuiScreen {
 
     @Override
     public void initGui() {
-    	this.buttonList.add(new GuiButton(0, width / 2 + 4 + 50, height - 24, 100, 20, "Cancel"));
-        this.login = new GuiButton(1, width / 2 - 154, height - 48, 100, 20, "Login");
+    	this.buttonList.add(new UiButton(0, width / 2 + 4 + 50, height - 24, 100, 20, "Cancel"));
+        this.login = new UiButton(1, width / 2 - 154, height - 48, 100, 20, "Login");
         this.buttonList.add(this.login);
-        this.remove = new GuiButton(2, width / 2 - 154, height - 24, 100, 20, "Remove");
+        this.remove = new UiButton(2, width / 2 - 154, height - 24, 100, 20, "Remove");
         this.buttonList.add(this.remove);
-        this.buttonList.add(new GuiButton(3, width / 2 + 4 + 50, height - 48, 100, 20, "Add"));
-        this.buttonList.add(new GuiButton(4, width / 2 - 50, height - 48, 100, 20, "Direct Login"));
-        this.rename = new GuiButton(6, width / 2 - 50, height - 24, 100, 20, "Edit");
+        this.buttonList.add(new UiButton(3, width / 2 + 4 + 50, height - 48, 100, 20, "Add"));
+        this.buttonList.add(new UiButton(4, width / 2 - 50, height - 48, 100, 20, "Direct Login"));
+        this.rename = new UiButton(6, width / 2 - 50, height - 24, 100, 20, "Edit");
         this.buttonList.add(this.rename);
-        this.buttonList.add(new GuiButton(7, width - 100, 0, 100, 20, "Use Mojang"));
-        this.buttonList.add(new GuiButton(8, width - 200, 0, 100, 20, "Use TheAltening"));
+        this.buttonList.add(new UiButton(7, width - 100, 0, 100, 20, "Use Mojang"));
+        this.buttonList.add(new UiButton(8, width - 200, 0, 100, 20, "Use TheAltening"));
         this.login.enabled = false;
         this.remove.enabled = false;
         this.rename.enabled = false;

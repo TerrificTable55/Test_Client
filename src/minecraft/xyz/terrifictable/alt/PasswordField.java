@@ -5,6 +5,7 @@ import net.minecraft.client.gui.*;
 import net.minecraft.client.*;
 import org.lwjgl.opengl.*;
 import net.minecraft.client.renderer.*;
+import xyz.terrifictable.Client;
 
 public class PasswordField extends Gui
 {
@@ -349,7 +350,7 @@ public class PasswordField extends Gui
                 if (var5) {
                     var4.substring(0, var2);
                 }
-                var9 = Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(this.text.replaceAll("(?s).", "*"), var7, var8, var1);
+                var9 = Client.fr.drawStringWithShadow(this.text.replaceAll("(?s).", "*"), var7, var8, var1);
             }
             final boolean var10 = this.cursorPosition < this.text.length() || this.text.length() >= this.getMaxStringLength();
             int var11 = var9;
@@ -361,14 +362,14 @@ public class PasswordField extends Gui
                 --var9;
             }
             if (var4.length() > 0 && var5 && var2 < var4.length()) {
-                Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(var4.substring(var2), var9, var8, var1);
+                Client.fr.drawStringWithShadow(var4.substring(var2), var9, var8, var1);
             }
             if (var6) {
                 if (var10) {
                     Gui.drawRect(var11, var8 - 1, var11 + 1, var8 + 1 + this.fontRenderer.FONT_HEIGHT, -3092272);
                 }
                 else {
-                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("_", var11, var8, var1);
+                    Client.fr.drawStringWithShadow("_", var11, var8, var1);
                 }
             }
             if (var3 != var2) {
