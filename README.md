@@ -3,11 +3,11 @@ Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br
 
 <a href="https://github.com/TerrificTable55/Test_Client/tree/main/export">Downloads</a>
 
-## Version 1.4
-added simple ClickGui and scaffold<br>
+## Version 1.5
+added configs, mainmenu image settings and fixed cheststealer
 
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/966125002862776390/unknown.png" />
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/966125168571342918/unknown.png" />
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/966731957130109020/unknown.png" /><br>
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/966732103599415367/unknown.png" /><br>
 
 Modules       | Commands
 --------------|---------
@@ -19,8 +19,9 @@ FakePlayer    | Bind
 ArrayList     | Info
 AimAssist     | Xray
 Fulbright     | Say
+FastPlace     |
 Killaura      |
-AutoWalk      | 
+AutoWalk      |
 AutoMine      |
 ClickGui      |
 FastBow       |
@@ -41,8 +42,45 @@ BHop          |
 Fly           |
 Hud           |
 ESP           |
-  
 
+<details align="center">
+  <summary>Images V1.4</summary>
+  Modules       | Commands<br>
+  --------------|---------<br>
+  ChestStealer  | Commands<br>
+  AutoRespawn   | Modules<br>
+  AntiCobweb    | Toggle<br>
+  FastLadder    | Prefix<br>
+  FakePlayer    | Bind<br>
+  ArrayList     | Info<br>
+  AimAssist     | Xray<br>
+  Fulbright     | Say<br>
+  Killaura      |<br>
+  AutoWalk      | <br>
+  AutoMine      |<br>
+  ClickGui      |<br>
+  FastBow       |<br>
+  Jetpack       |<br>
+  Dolphin       |<br>
+  Parkour       |<br>
+  AntiAfk       |<br>
+  Sprint        |<br>
+  Spider        |<br>
+  NoFall        |<br>
+  TabGui        |<br>
+  Glide         |<br>
+  Sneak         |<br>
+  Speed         |<br>
+  Xray          |<br>
+  Step          |<br>
+  BHop          |<br>
+  Fly           |<br>
+  Hud           |<br>
+  ESP           |<br>
+  <br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/966125002862776390/unknown.png" /><br>
+  <img src="https://cdn.discordapp.com/attachments/944354446337507358/966125168571342918/unknown.png" />
+</details>
 
 <details align="center">
   <summary>Images V1.3</summary>
