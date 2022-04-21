@@ -10,10 +10,7 @@ import xyz.terrifictable.events.listeners.EventChat;
 import xyz.terrifictable.events.listeners.EventKey;
 import xyz.terrifictable.module.Module;
 import xyz.terrifictable.module.ModuleManager;
-import xyz.terrifictable.module.modules.client.ClickGuiModule;
-import xyz.terrifictable.module.modules.client.ClickGuiRender;
-import xyz.terrifictable.module.modules.client.ModuleList;
-import xyz.terrifictable.module.modules.client.TabGui;
+import xyz.terrifictable.module.modules.client.*;
 import xyz.terrifictable.module.modules.combat.AimAssist;
 import xyz.terrifictable.module.modules.combat.FastBow;
 import xyz.terrifictable.module.modules.combat.Killaura;
@@ -21,6 +18,9 @@ import xyz.terrifictable.module.modules.movement.*;
 import xyz.terrifictable.module.modules.player.*;
 import xyz.terrifictable.module.modules.render.*;
 import xyz.terrifictable.ui.Hud;
+import xyz.terrifictable.util.ConfigUtil;
+import xyz.terrifictable.util.font.FontUtil;
+import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,22 +30,31 @@ public class Client {
 
     public static String author = "TerrificTable";
     public static String name = "Test";
-    public static String version = "1.4";
+    public static String version = "1.5";
     public static String prefix = ">";
 
     public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
     public static CommandManager commandManager = new CommandManager();
     public static ModuleManager moduleManager = new ModuleManager();
     public static ClickGuiRender clickgui = new ClickGuiRender();
+    public static ConfigUtil configManager = new ConfigUtil();
     public static AltManager altManager = new AltManager();
+    public static MinecraftFontRenderer fr;
     public static Hud hud = new Hud();
+
+    public static int image = 0;
 
     public static void startup() {
         Display.setTitle(name + " v" +version);
 
+        FontUtil.bootstrap();
+        fr = FontUtil.normal;
+
+        // OTHER
+        addModule(new SaveConfigs());
+
         // Client
         addModule(new ClickGuiModule());
-        // addModule(new MainMenu());
         addModule(new TabGui());
 
         // Combat
@@ -73,6 +82,7 @@ public class Client {
         addModule(new AntiCobweb());
         addModule(new FakePlayer());
         addModule(new FastLadder());
+        addModule(new FastPlace());
         addModule(new AutoMine());
         addModule(new Scaffold());
         addModule(new AntiAfk());
@@ -84,6 +94,9 @@ public class Client {
         addModule(new Fulbright());
         addModule(new Xray());
         addModule(new ESP());
+
+
+        configManager.loadConfig();
     }
 
     public static void addModule(Module module) {
