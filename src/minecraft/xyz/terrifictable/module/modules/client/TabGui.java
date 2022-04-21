@@ -16,6 +16,7 @@ import xyz.terrifictable.setting.settings.KeybindSetting;
 import xyz.terrifictable.setting.settings.ModeSetting;
 import xyz.terrifictable.setting.settings.NumberSetting;
 import xyz.terrifictable.util.ColorUtil;
+import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
 import java.awt.*;
 import java.util.List;
@@ -42,7 +43,7 @@ public class TabGui extends Module {
         List<Module> modules = Client.getModulesByCategory(Module.Category.values()[currentTab]);
 
         if (event instanceof EventRenderGui) {
-            FontRenderer fr = mc.fontRendererObj;
+            MinecraftFontRenderer fr = Client.fr;
 
             float seconds = (float) rainbowDelay.getValue();
             int color = ColorUtil.getRainbow(seconds, (float) rainbowSaturation.getValue(), (float) rainbowBrightness.getValue());
@@ -80,7 +81,7 @@ public class TabGui extends Module {
                 int index_m = 0, maxLen_m = 0;
                 for (Module module : modules) {
                     if (fr.getStringWidth(module.name) > maxLen_m)
-                        maxLen_m = fr.getStringWidth(module.name);
+                        maxLen_m = mc.fontRendererObj.getStringWidth(module.name);
                     index_m++;
                 }
 
@@ -99,7 +100,7 @@ public class TabGui extends Module {
                     if (count == moduleIndex && module.expanded) {
 
                         // === SETTINGS ===
-                        int index = 0, maxLen = 0;
+                        double index = 0, maxLen = 0;
                         for (Setting setting : module.settings) {
                             if (setting instanceof BooleanSetting) {
                                 BooleanSetting bool = (BooleanSetting) setting;

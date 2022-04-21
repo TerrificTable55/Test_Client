@@ -1,7 +1,6 @@
 package xyz.terrifictable.module.modules.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import xyz.terrifictable.Client;
@@ -11,10 +10,11 @@ import xyz.terrifictable.module.Module;
 import xyz.terrifictable.setting.settings.BooleanSetting;
 import xyz.terrifictable.setting.settings.NumberSetting;
 import xyz.terrifictable.util.ColorUtil;
+import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
 public class Hud extends Module {
+    private MinecraftFontRenderer fr;
     private ScaledResolution sr;
-    private FontRenderer fr;
 
     public BooleanSetting watermark = new BooleanSetting("Watermark", true);
     public BooleanSetting fps = new BooleanSetting("FPS", true);
@@ -32,7 +32,7 @@ public class Hud extends Module {
     public void onEvent(Event event) {
         if (!this.isToggled()) return;
         sr = new ScaledResolution(mc);
-        fr = mc.fontRendererObj;
+        fr = Client.fr;
 
         if (event instanceof EventRenderGui) {
             // Watermark
@@ -40,24 +40,24 @@ public class Hud extends Module {
                 int watermark_y = 2;
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(2, 2, 0);
-                GlStateManager.scale(1.6, 1.6, 1);
+                GlStateManager.scale(2, 2, 1);
                 GlStateManager.translate(-2, -2, 0);
-                fr.drawString(Client.name, 2, watermark_y, 0xffffff);
-                fr.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
+                mc.fontRendererObj.drawString(Client.name, 2, watermark_y, 0xffffff);
+                mc.fontRendererObj.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
                 GlStateManager.popMatrix();
             }
 
             if (fps.isEnabled()) {
                 // FPS
-                fr.drawString("[FPS]", 5, 100, 0xffff9900);
-                fr.drawString(String.valueOf(Minecraft.getDebugFPS()), fr.getStringWidth("[FPS] ") + 8, 100, ColorUtil.colorEqTNum((int) maxFPS.getValue(), Minecraft.getDebugFPS()));
+                fr.drawString("[FPS]", 5, 110, 0xffff9900);
+                fr.drawString(String.valueOf(Minecraft.getDebugFPS()), fr.getStringWidth("[FPS] ") + 8, 110, ColorUtil.colorEqTNum((int) maxFPS.getValue(), Minecraft.getDebugFPS()));
             }
 
             if (coords.isEnabled()) {
                 // Coords
-                double y = sr.getScaledHeight() - 11.5f;
+                float y = sr.getScaledHeight() - 11.5f;
 
-                fr.drawString("[X]", 5, y, 0xffff9900);
+                fr.drawString("[X]", 5.0, y, 0xffff9900);
                 fr.drawString(String.valueOf(Math.round(mc.thePlayer.posX)), 5 + fr.getStringWidth("[X]") + 8, y, -1);
                 fr.drawString("[Y]", 10 + fr.getStringWidth(Math.round(mc.thePlayer.posX) + "[X] ") + 10, y, 0xffff9900);
                 fr.drawString(String.valueOf(Math.round(mc.thePlayer.posY)), 5 + fr.getStringWidth("[X]" + "[Y] " + Math.round(mc.thePlayer.posX)) + 20, y, -1);

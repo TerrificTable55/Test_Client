@@ -13,6 +13,8 @@ public class ClickGuiModule extends Module {
 
     @Override
     public void onEnable() {
+        Client.configManager.saveConfig();
+
         mc.displayGuiScreen(Client.getClickgui());
 
         this.toggled = false;

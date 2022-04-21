@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.module.Module;
+import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,8 +14,7 @@ import java.util.List;
 public class ClickGuiRender extends GuiScreen {
 
     private ScaledResolution sr;
-    private FontRenderer fr;
-    public boolean click;
+    private MinecraftFontRenderer fr;
 
     public ClickGuiRender() { }
 
@@ -24,7 +24,7 @@ public class ClickGuiRender extends GuiScreen {
 
 
         sr = new ScaledResolution(mc);
-        fr = mc.fontRendererObj;
+        fr = Client.fr;
 
         int categoryIndex = 0;
 
@@ -35,30 +35,41 @@ public class ClickGuiRender extends GuiScreen {
             // === MODULES ===
             List<Module> modules = Client.getModulesByCategory(category);
 
+            // === biggest module length ===
             int maxLen_m = 0;
             for (Module module : modules) {
-                if (fr.getStringWidth(module.name) > maxLen_m) {
-                    maxLen_m = fr.getStringWidth(module.name);
+                if (!module.name.equalsIgnoreCase("save")) {
+                    if (fr.getStringWidth(module.name) > maxLen_m) {
+                        maxLen_m = mc.fontRendererObj.getStringWidth(module.name);
+                    }
                 }
             }
+            // === biggest module length ===
 
             // === CATEGORYS ===
-            Gui.drawRect(2 + categoryIndex * 80, 2, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, fr.FONT_HEIGHT + 7, 0x90000000);
+            Gui.drawRect(2 + categoryIndex * 80, 2, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, mc.fontRendererObj.FONT_HEIGHT + 7, 0x90000000);
             fr.drawString(category.name, 5 + categoryIndex * 80, 5, -1);
             // === CATEGORYS ===
 
-            Gui.drawRect(2 + categoryIndex * 80, 2 + fr.FONT_HEIGHT  + 7, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, (modules.size() * 12) + fr.FONT_HEIGHT + 9, 0x90000000);
+            // Draw modules box
+            Gui.drawRect(2 + categoryIndex * 80, 2 + mc.fontRendererObj.FONT_HEIGHT  + 7, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, (modules.size() * 12) + mc.fontRendererObj.FONT_HEIGHT + 9, 0x90000000);
 
-
+            // Cycle through modules
             for (Module module : Client.getModulesByCategory(category)) {
-                fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, -1);
-                if (module.isToggled()) {
-                    fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, 0xff00ff00);
+                if (!module.name.equalsIgnoreCase("save")) {
+                    fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, -1); // Draw module name
+                    if (module.isToggled() || module.name.equalsIgnoreCase("clickgui")) {
+                        fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, 0xff00ff00); // Color name green if toggled
+                    }
+
+                    if (isInside(mouseX, mouseY, // check if mouse is above current module
+                            2 + categoryIndex * 80,
+                            moduleIndex * 12 + 20,
+                            (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20,
+                            moduleIndex * 12 + 20 + mc.fontRendererObj.FONT_HEIGHT
+                    )) { fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, 0xff00eeff); } // color light blue if hovered
+                    moduleIndex++;
                 }
-                if (isInside(mouseX, mouseY, 2 + categoryIndex * 80, moduleIndex * 12 + 20, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, moduleIndex * 12 + 20 + fr.FONT_HEIGHT)) {
-                    fr.drawString(module.name, 5 + categoryIndex * 80, (moduleIndex * 12) + 20, 0xff00eeff);
-                }
-                moduleIndex++;
             }
 
             categoryIndex++;
@@ -73,25 +84,32 @@ public class ClickGuiRender extends GuiScreen {
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
-        click = true;
 
         int categoryIndex = 0;
-        for (Module.Category category : Module.getCategorys()) {
+        for (Module.Category category : Module.getCategorys()) { // Cycle trough Categorys
+            // === Longest module name ===
             int maxLen_m = 0;
             for (Module module : Client.getModulesByCategory(category)) {
                 if (fr.getStringWidth(module.name) > maxLen_m) {
-                    maxLen_m = fr.getStringWidth(module.name);
+                    maxLen_m = mc.fontRendererObj.getStringWidth(module.name);
                 }
             }
+            // === Longest module name ===
 
+            // === Get which module is clicked on ===
             int moduleIndex = 0;
-            for (Module module : Client.getModulesByCategory(category)) {
-                int y = moduleIndex * 12 + 20;
-                if (isInside(mouseX, mouseY, 2 + categoryIndex * 80, y, (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20, y + fr.FONT_HEIGHT)) {
-                    module.toggle();
-                }
+            for (Module module : Client.getModulesByCategory(category)) { // Cycle trough modules
+                // Check if current module is clicked on
+                if (mouseButton == 0 && isInside(mouseX,
+                        mouseY,
+                        2 + categoryIndex * 80,
+                        moduleIndex * 12 + 20,
+                        (categoryIndex * 80) + fr.getStringWidth(category.name) + maxLen_m - 20,
+                        (moduleIndex * 12 + 20) + mc.fontRendererObj.FONT_HEIGHT
+                )) { module.toggle(); /* Toggle module */  }
                 moduleIndex++;
             }
+            // === Get which module is clicked on ===
             categoryIndex++;
         }
     }
@@ -99,13 +117,11 @@ public class ClickGuiRender extends GuiScreen {
     @Override
     protected void mouseReleased(int mouseX, int mouseY, int state) {
         super.mouseReleased(mouseX, mouseY, state);
-        click = false;
     }
 
     @Override
     public void initGui() {
         super.initGui();
-        click = false;
     }
 
     public boolean isInside(int mouseX, int mouseY, double x, double y, double width, double height) {

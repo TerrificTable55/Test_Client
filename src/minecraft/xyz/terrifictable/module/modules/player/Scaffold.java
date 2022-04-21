@@ -13,10 +13,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.module.Module;
+import xyz.terrifictable.setting.settings.ModeSetting;
 
 public class Scaffold extends Module {
+    public ModeSetting mode = new ModeSetting("Mode", "Normal", "Normal", "Tower");
+
     public Scaffold() {
         super("Scaffold", Keyboard.KEY_LMENU, Category.PLAYER);
+        addSettings(mode);
     }
 
     @Override
@@ -26,33 +30,40 @@ public class Scaffold extends Module {
         Entity player = mc.thePlayer;
         BlockPos bp = new BlockPos(player.posX, player.getEntityBoundingBox().minY, player.posZ);
 
-        if (valid(bp.add(0, -2, 0)))
-            place(bp.add(0, -1, -1), EnumFacing.UP);
-        else if (valid(bp.add(-1, -1, 0)))
-            place(bp.add(0, -1, 0), EnumFacing.EAST);
-        else if (valid(bp.add(1, -1, 0)))
-            place(bp.add(0, -1, -1), EnumFacing.WEST);
-        else if (valid(bp.add(0, -1, -1)))
-            place(bp.add(0, -1, 0), EnumFacing.SOUTH);
-        else if (valid(bp.add(0, -1, 1)))
-            place(bp.add(0, -1, 0), EnumFacing.NORTH);
+        if (mode.getMode().equalsIgnoreCase("tower")) {
+            if (valid(bp.add(0 ,1, 0)))
+                place(bp.add(0, 0, 0), EnumFacing.UP);
+        }
 
-        else if (valid(bp.add(1, -1, 1))) {
-            if (valid(bp.add(0, -1, 1)))
-                place(bp.add(0, -1, 1), EnumFacing.NORTH);
-            place(bp.add(1, -1, 1), EnumFacing.EAST);
-        } else if (valid(bp.add(-1, -1, 1))) {
-            if (valid(bp.add(-1, -1, 0)))
-                place(bp.add(0, -1, 1), EnumFacing.WEST);
-            place(bp.add(-1, -1, 1), EnumFacing.SOUTH);
-        } else if (valid(bp.add(-1, -1, -1))) {
-            if (valid(bp.add(0, -1, -1)))
-                place(bp.add(0, -1, 1), EnumFacing.SOUTH);
-            place(bp.add(-1, -1, 1), EnumFacing.WEST);
-        } else if (valid(bp.add(1, -1, -1))) {
-            if (valid(bp.add(1, -1, 0)))
-                place(bp.add(1, -1, 0), EnumFacing.EAST);
-            place(bp.add(1, -1, -1), EnumFacing.NORTH);
+        if (mode.getMode().equalsIgnoreCase("normal")) {
+            if (valid(bp.add(0, -2, 0)))
+                place(bp.add(0, -1, -1), EnumFacing.UP);
+            else if (valid(bp.add(-1, -1, 0)))
+                place(bp.add(0, -1, 0), EnumFacing.EAST);
+            else if (valid(bp.add(1, -1, 0)))
+                place(bp.add(0, -1, -1), EnumFacing.WEST);
+            else if (valid(bp.add(0, -1, -1)))
+                place(bp.add(0, -1, 0), EnumFacing.SOUTH);
+            else if (valid(bp.add(0, -1, 1)))
+                place(bp.add(0, -1, 0), EnumFacing.NORTH);
+
+            else if (valid(bp.add(1, -1, 0))) {
+                if (valid(bp.add(0, -1, 1)))
+                    place(bp.add(0, -1, 1), EnumFacing.NORTH);
+                place(bp.add(1, -1, 1), EnumFacing.EAST);
+            } else if (valid(bp.add(-1, -1, 1))) {
+                if (valid(bp.add(-1, -1, 0)))
+                    place(bp.add(0, -1, 1), EnumFacing.WEST);
+                place(bp.add(-1, -1, 1), EnumFacing.SOUTH);
+            } else if (valid(bp.add(-1, -1, -1))) {
+                if (valid(bp.add(0, -1, -1)))
+                    place(bp.add(0, -1, 1), EnumFacing.SOUTH);
+                place(bp.add(-1, -1, 1), EnumFacing.WEST);
+            } else if (valid(bp.add(1, -1, -1))) {
+                if (valid(bp.add(1, -1, 0)))
+                    place(bp.add(1, -1, 0), EnumFacing.EAST);
+                place(bp.add(1, -1, -1), EnumFacing.NORTH);
+            }
         }
     }
 

@@ -19,6 +19,9 @@ public class ModeSetting extends Setting {
     public String getMode() {
         return modes.get(index);
     }
+    public void setMode(String mode) {
+        index = modes.indexOf(mode);
+    }
     public boolean is(String mode) {
         return index == modes.indexOf(mode);
     }
