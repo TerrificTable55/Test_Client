@@ -9,7 +9,7 @@ import xyz.terrifictable.setting.settings.ModeSetting;
 
 public class MainMenu extends GuiScreen {
     private static final String[] buttons = {"Singleplayer", "Multiplayer", "AltManager", "MenuOptions", "Settings", "Quit"};
-    public static String image = "city.jpg";
+    public static String image = "sea.jpg";
 
     public MainMenu() {
     }
@@ -54,7 +54,13 @@ public class MainMenu extends GuiScreen {
         GlStateManager.scale(3, 3, 1);
         GlStateManager.translate(-(width / 2F), -(height / 2F), 0);
         // this.drawCenteredString(mc.fontRendererObj, Client.name + " v" + Client.version, (width / 2F) - 2, height / 2F - mc.fontRendererObj.FONT_HEIGHT / 2F, -1);
-        this.drawCenteredString(mc.fontRendererObj, Client.name + " v" + Client.version, (width / 2F) - 2, height / 2F - mc.fontRendererObj.FONT_HEIGHT / 2F, -1);
+        this.drawCenteredString(mc.fontRendererObj, Client.name, (width / 2F) - 2, height / 2F - mc.fontRendererObj.FONT_HEIGHT / 2F, -1);
+        GlStateManager.popMatrix();
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(width / 2F, height / 2F, 0);
+        GlStateManager.scale(1.2, 1.2, 1);
+        GlStateManager.translate(-(width / 2F), -(height / 2F), 0);
+        this.drawCenteredString(mc.fontRendererObj, " v" + Client.version, (width / 2F) - 2 + 33, height / 2F - 11 - mc.fontRendererObj.FONT_HEIGHT / 2F, 0xeeffc182);
         GlStateManager.popMatrix();
 
         // AUTHOR

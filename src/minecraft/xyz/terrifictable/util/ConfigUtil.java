@@ -55,8 +55,10 @@ public class ConfigUtil {
                 File file = new File(this.ConfigFile.getAbsolutePath(), module.name + ".txt");
                 BufferedWriter out = new BufferedWriter(new FileWriter(file));
 
-                out.write("toggled:" + (module.toggled ? "On" : "Off"));
-                out.write("\r\n");
+                if (!module.name.equalsIgnoreCase("fakeplayer") || !module.name.equalsIgnoreCase("clickgui")) {
+                    out.write("toggled:" + (module.toggled ? "On" : "Off"));
+                    out.write("\r\n");
+                }
 
                 out.write("keybind:" + Keyboard.getKeyName(module.getKey()));
                 out.write("\r\n");

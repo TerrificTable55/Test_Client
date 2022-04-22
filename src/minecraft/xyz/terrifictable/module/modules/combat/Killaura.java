@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
 
 public class Killaura extends Module {
     public Timer timer = new Timer();
+    public static Entity target;
+
     public NumberSetting range = new NumberSetting("Range", 4, 1, 6, .1);
     public NumberSetting cps = new NumberSetting("CPS", 10, 1, 20, 1);
     public ModeSetting swing = new ModeSetting("Swing", "Normal", "Normal", "Silent");
@@ -53,7 +55,7 @@ public class Killaura extends Module {
             EventMotion eventMotion = (EventMotion)event;
 
             List<Entity> targets = mc.theWorld.loadedEntityList.stream().filter(EntityLivingBase.class::isInstance).collect(Collectors.toList());
-            targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer && !entity.isDead).collect(Collectors.toList()); // && entity.getHealth() > 0
+            targets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer && !(((EntityLivingBase) entity).getHealth() <= 0)).collect(Collectors.toList()); // && entity.getHealth() > 0
             targets.sort(Comparator.comparingDouble(entity -> ((Entity)entity).getDistanceToEntity(mc.thePlayer)));
             List<Entity> newtargets = targets.stream().filter(entity -> entity.getDistanceToEntity(mc.thePlayer) < range.getValue() && entity != mc.thePlayer && !entity.isDead).collect(Collectors.toList());
             newtargets.sort(Comparator.comparingDouble(entity -> ((Entity) entity).getDistanceToEntity(mc.thePlayer)));
@@ -72,7 +74,7 @@ public class Killaura extends Module {
             }
 
             if (!newtargets.isEmpty()) {
-                Entity target = newtargets.get(0);
+                target = newtargets.get(0);
 
                 // ClientSide
                 // mc.thePlayer.rotationYaw = (getRotations(target)[0]);

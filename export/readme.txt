@@ -15,6 +15,11 @@ just create a new minecraft version thingy in the launcher and select "tutorial"
 
 oh yea here are the links
 
+Version 1.6
+JAR:      https://anonfiles.com/30QaUeYcx4/test_jar
+JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
+
+
 Version 1.5
 JAR:      https://anonfiles.com/dfkbLfYbxf/test_jar
 JSON:     https://anonfiles.com/f0eaY3W0xb/test_json

@@ -1,5 +1,6 @@
 package xyz.terrifictable.module.modules.client;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
@@ -42,6 +43,7 @@ public class TabGui extends Module {
     public void onEvent(Event event) {
         List<Module> modules = Client.getModulesByCategory(Module.Category.values()[currentTab]);
 
+
         if (event instanceof EventRenderGui) {
             MinecraftFontRenderer fr = Client.fr;
 
@@ -58,6 +60,7 @@ public class TabGui extends Module {
                 secondaryColor = 0xffd0021b;
             }
 
+
             // === CATEGORYS ===
             // 0xff0f00ff   0xff0090ff
             Gui.drawRect(2, 35, 57, 35 + Category.values().length * 12.5, 0x90000000);
@@ -73,16 +76,14 @@ public class TabGui extends Module {
                 count++;
             }
 
-
             // === MODULES ===
             if (expanded) {
                 if (modules.size() == 0) { expanded = false; return; }
 
-                int index_m = 0, maxLen_m = 0;
+                int maxLen_m = 0;
                 for (Module module : modules) {
                     if (fr.getStringWidth(module.name) > maxLen_m)
                         maxLen_m = mc.fontRendererObj.getStringWidth(module.name);
-                    index_m++;
                 }
 
                 Gui.drawRect(60, 35, 57 + maxLen_m + 12, 35 + modules.size() * 12.3, 0x90000000);
@@ -252,7 +253,7 @@ public class TabGui extends Module {
                             }
                         }
                     } else {
-                        if (!modules.get(moduleIndex).name.equalsIgnoreCase("tabgui") || !modules.get(moduleIndex).name.equalsIgnoreCase("arraylist"))
+                        if (!modules.get(moduleIndex).name.equalsIgnoreCase("save") || !modules.get(moduleIndex).name.equalsIgnoreCase("tabgui") || !modules.get(moduleIndex).name.equalsIgnoreCase("arraylist"))
                             if (modules.get(moduleIndex).expanded) {
 
                             } else

@@ -3,6 +3,7 @@ package xyz.terrifictable.module;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
+import xyz.terrifictable.Client;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.setting.Setting;
 import xyz.terrifictable.setting.settings.KeybindSetting;

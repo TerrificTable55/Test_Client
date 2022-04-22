@@ -19,6 +19,7 @@ import xyz.terrifictable.module.modules.player.*;
 import xyz.terrifictable.module.modules.render.*;
 import xyz.terrifictable.ui.Hud;
 import xyz.terrifictable.util.ConfigUtil;
+import xyz.terrifictable.util.SessionChanger;
 import xyz.terrifictable.util.font.FontUtil;
 import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
@@ -30,7 +31,7 @@ public class Client {
 
     public static String author = "TerrificTable";
     public static String name = "Test";
-    public static String version = "1.5";
+    public static String version = "1.6";
     public static String prefix = ">";
 
     public static CopyOnWriteArrayList<Module> modules = new CopyOnWriteArrayList<Module>();
@@ -50,8 +51,7 @@ public class Client {
         FontUtil.bootstrap();
         fr = FontUtil.normal;
 
-        // OTHER
-        addModule(new SaveConfigs());
+        SessionChanger.getInstance().setUserOffline("quickProgram");
 
         // Client
         addModule(new ClickGuiModule());
@@ -89,12 +89,12 @@ public class Client {
         addModule(new NoFall());
 
         // Render
-        addModule(new xyz.terrifictable.module.modules.client.Hud());
+        addModule(new xyz.terrifictable.module.modules.render.Hud());
         addModule(new ModuleList());
+        addModule(new TargetHud());
         addModule(new Fulbright());
         addModule(new Xray());
         addModule(new ESP());
-
 
         configManager.loadConfig();
     }
