@@ -6,7 +6,7 @@ Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br
 ## Version 1.6
 added settings to cheststealer, added targethud, improved killaura
 
-<img src="https://cdn.discordapp.com/attachments/944354446337507358/966880441569251378/unknown.png" />
+<img src="https://cdn.discordapp.com/attachments/944354446337507358/966882365999812708/unknown.png" />
 <img src="https://cdn.discordapp.com/attachments/944354446337507358/966881171055181874/unknown.png" />
 
 Modules       | Commands
