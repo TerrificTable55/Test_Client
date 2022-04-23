@@ -1,22 +1,19 @@
 package xyz.terrifictable.alt;
 
-import java.io.IOException;
-import java.net.Proxy;
-
-import org.lwjgl.input.Keyboard;
-
 import com.mojang.authlib.Agent;
 import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumChatFormatting;
+import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.ui.UiButton;
-import xyz.terrifictable.util.font.FontUtil;
+
+import java.io.IOException;
+import java.net.Proxy;
 
 
 public class GuiAddAlt
@@ -147,4 +144,3 @@ extends GuiScreen {
     }
 
 }
-

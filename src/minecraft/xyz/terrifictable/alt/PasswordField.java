@@ -1,10 +1,12 @@
 package xyz.terrifictable.alt;
 
-import net.minecraft.util.*;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.*;
-import org.lwjgl.opengl.*;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.util.ChatAllowedCharacters;
+import org.lwjgl.opengl.GL11;
 import xyz.terrifictable.Client;
 
 public class PasswordField extends Gui

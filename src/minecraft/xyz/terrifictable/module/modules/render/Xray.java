@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.module.Module;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Xray extends Module {
     private float old_gamma;

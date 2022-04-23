@@ -1,7 +1,5 @@
 package xyz.terrifictable.util;
 
-import java.util.UUID;
-
 import com.mojang.authlib.Agent;
 import com.mojang.authlib.AuthenticationService;
 import com.mojang.authlib.UserAuthentication;
@@ -9,6 +7,8 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.util.UUIDTypeAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
+
+import java.util.UUID;
 
 public class SessionChanger {
     private static SessionChanger instance;

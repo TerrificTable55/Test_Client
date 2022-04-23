@@ -1,7 +1,6 @@
 package xyz.terrifictable.ui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import xyz.terrifictable.Client;

@@ -1,10 +1,8 @@
 package xyz.terrifictable.ui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.events.listeners.EventRenderGui;
 import xyz.terrifictable.module.Module;
@@ -35,7 +33,7 @@ public class Hud {
         if (mc.gameSettings.showDebugInfo) return;
 
         Client.modules.sort(Comparator.comparingInt(m ->
-                mc.fontRendererObj.getStringWidth(((Module)m).name))
+                mc.fontRendererObj.getStringWidth(((Module)m).displayName))
                 .reversed()
         );
 
@@ -54,7 +52,7 @@ public class Hud {
         // ArrayList
         if (Client.getModuleByName("arraylist").isToggled()) {
             for (Module module : Client.modules) {
-                if (module.name.equalsIgnoreCase("arraylist")) {
+                if (module.displayName.equalsIgnoreCase("arraylist")) {
                     for (Setting setting : module.settings) {
                         if (setting.name.equalsIgnoreCase("rainbow")){
                             rainbow = ((BooleanSetting)setting).enabled;
@@ -82,29 +80,29 @@ public class Hud {
 
             int count = 0;
             for (Module module : Client.modules) {
-                if (!module.isToggled() || module.name.equalsIgnoreCase("save") || module.name.equalsIgnoreCase("tabgui") || module.name.equalsIgnoreCase("cheststealer") || module.name.equalsIgnoreCase("arraylist") || module.name.equalsIgnoreCase("hud")) continue;
+                if (!module.isToggled() || module.displayName.equalsIgnoreCase("save") || module.displayName.equalsIgnoreCase("tabgui") || module.displayName.equalsIgnoreCase("cheststealer") || module.displayName.equalsIgnoreCase("arraylist") || module.displayName.equalsIgnoreCase("hud")) continue;
 
                 double offset = count * (mc.fontRendererObj.FONT_HEIGHT + 6);
-                Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 4, offset, sr.getScaledWidth(), 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0x90000000);
+                Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 4, offset, sr.getScaledWidth(), 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0x90000000);
 
                 if (rainbow) {
                     if (rainbowNormal) { // NORMAL RAINBOW
-                        Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, ColorUtil.getRainbow((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness));
-                        // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, ColorUtil.getRainbow((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness)); // Lines between modules
+                        Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, ColorUtil.getRainbow((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness));
+                        // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, ColorUtil.getRainbow((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness)); // Lines between modules
 
                     } else if (rainbowWave) { // RAINBOW WAVE
                         int color = ColorUtil.getRainbowWave((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness, count * rainbowAmplifier);
                         // System.out.println(color);
-                        Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, color);
-                        // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, ColorUtil.getRainbowWave((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness, count * rainbowAmplifier)); // Lines between modules
+                        Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, color);
+                        // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, ColorUtil.getRainbowWave((float) rainbowSpeed, (float) rainbowSaturation, (float) rainbowBrightness, count * rainbowAmplifier)); // Lines between modules
 
                     }
                 } else {
-                    Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0xffff0000);
-                    // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.name) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, 0xffff0000); // Lines between modules
+                    Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 4, offset, sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 6 + mc.fontRendererObj.FONT_HEIGHT + offset, 0xffff0000);
+                    // Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 5, 5 + fr.FONT_HEIGHT + offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, 0xffff0000); // Lines between modules
                 }
 
-                fr.drawString(module.name, sr.getScaledWidth() - fr.getStringWidth(module.name) - 1, 4 + offset, 0xffffff);
+                fr.drawString(module.displayName, sr.getScaledWidth() - fr.getStringWidth(module.displayName) - 1, 4 + offset, 0xffffff);
                 count++;
             }
         }

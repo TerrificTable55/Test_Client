@@ -1,9 +1,7 @@
 package xyz.terrifictable.module;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
-import xyz.terrifictable.Client;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.setting.Setting;
 import xyz.terrifictable.setting.settings.KeybindSetting;
@@ -18,6 +16,7 @@ public class Module {
     public String name;
     public KeybindSetting keyCode = new KeybindSetting(0);
     public boolean toggled;
+    public String displayName;
     public Category category;
     public Minecraft mc = Minecraft.getMinecraft();
 
@@ -30,6 +29,7 @@ public class Module {
         keyCode.code = key;
         this.category = category;
         this.addSettings(keyCode);
+        this.displayName = name;
     }
 
     public void onEnable() {}

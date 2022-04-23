@@ -12,14 +12,15 @@ public class Sprint extends Module {
 
     public void onEnable() {}
 
-    public void onDisable() {
-        mc.thePlayer.setSprinting(mc.gameSettings.keyBindSprint.isPressed());
-    }
-
     public void onEvent(Event event) {
+        if (!this.isToggled() || mc.thePlayer == null || mc.theWorld == null) return;
         if (!(event instanceof EventUpdate) && !event.isPre()) return;
 
         if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally)
             mc.thePlayer.setSprinting(true);
+    }
+
+    public void onDisable() {
+        mc.thePlayer.setSprinting(mc.gameSettings.keyBindSprint.isPressed());
     }
 }

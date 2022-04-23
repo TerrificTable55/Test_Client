@@ -16,6 +16,7 @@ public class ChestESPUtil {
         double y = blockPos.getY() - mc.getRenderManager().renderPosY;
         double z = blockPos.getZ() - mc.getRenderManager().renderPosZ;
 
+        GL11.glPushMatrix();
         GL11.glBlendFunc(770, 771);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glLineWidth(2.0f);
@@ -36,6 +37,7 @@ public class ChestESPUtil {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);
+        GL11.glPopMatrix();
 
     }
 }

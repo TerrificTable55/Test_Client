@@ -9,12 +9,13 @@ import org.lwjgl.opengl.GL11;
 public class MobESPUtils {
     public static void entityESPBox(Entity entity, int mode) { // , float lineWidth    // 2.0f
 
+        GL11.glDepthMask(false);
+        GL11.glPushMatrix();
         GL11.glBlendFunc(770, 771);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glLineWidth(2.0f); // floa tlinewidth
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
-        GL11.glDepthMask(false);
 
         if (mode == 0) { // Enemy
             GL11.glColor4d((double) 1 - Minecraft.getMinecraft().thePlayer.getDistanceToEntity(entity) / 40,
@@ -47,10 +48,12 @@ public class MobESPUtils {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);
+        GL11.glPopMatrix();
     }
 
     public static void itemESPBox(Entity entity, float red, float green, float blue) { // , float lineWidth    // 2.0f
 
+        GL11.glPushMatrix();
         GL11.glBlendFunc(770, 771);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glLineWidth(2.0f); // floa tlinewidth
@@ -76,5 +79,6 @@ public class MobESPUtils {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);
+        GL11.glPopMatrix();
     }
 }

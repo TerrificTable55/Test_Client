@@ -1,16 +1,15 @@
 package xyz.terrifictable.alt;
 
-import java.net.Proxy;
-
 import com.mojang.authlib.Agent;
 import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Session;
 import xyz.terrifictable.Client;
+
+import java.net.Proxy;
 
 public final class AltLoginThread
 extends Thread {

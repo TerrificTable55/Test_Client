@@ -1,6 +1,5 @@
 package xyz.terrifictable.module.modules.client;
 
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;

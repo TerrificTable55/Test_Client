@@ -1,10 +1,6 @@
 package xyz.terrifictable.util;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
 import com.mojang.authlib.GameProfile;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -19,11 +15,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StringUtils;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 
 public class Invoker {

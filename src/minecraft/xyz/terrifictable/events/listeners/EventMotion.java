@@ -4,8 +4,11 @@ import xyz.terrifictable.events.Event;
 
 public class EventMotion extends Event<EventMotion> {
 
-    public double x, y, z;
-    public float yaw, pitch;
+    public double x;
+    public static double y;
+    public double z;
+    public float yaw;
+    public static float pitch;
     public boolean onGround;
 
     public EventMotion(double x, double y, double z, float yaw, float pitch, boolean onGround) {
@@ -23,7 +26,7 @@ public class EventMotion extends Event<EventMotion> {
     public void setX(double x) {
         this.x = x;
     }
-    public double getY() {
+    public static double getY() {
         return y;
     }
     public void setY(double y) {
@@ -44,8 +47,8 @@ public class EventMotion extends Event<EventMotion> {
     public float getPitch() {
         return pitch;
     }
-    public void setPitch(float pitch) {
-        this.pitch = pitch;
+    public static void setPitch(float pitchIn) {
+        pitch = pitchIn;
     }
     public boolean isOnGround() {
         return onGround;

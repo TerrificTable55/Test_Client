@@ -21,7 +21,9 @@ public class Fly extends Module {
     }
 
     public void onEvent(Event event) {
+        if (!this.isToggled()) return;
         if (!(event instanceof EventUpdate) && !event.isPre()) return;
+        if (mc.theWorld == null || mc.thePlayer == null) return;
 
         switch (mode.getMode()) {
             case "Normal":

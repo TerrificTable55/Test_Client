@@ -1,5 +1,6 @@
 package xyz.terrifictable.module.modules.render;
 
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecartChest;
@@ -37,6 +38,7 @@ public class ESP extends Module {
     public void onRender() {
         if (!this.isToggled()) return;
 
+        GlStateManager.pushMatrix();
         // CHEST ESP
         if (chestEsp.isEnabled()) {
             Color color = new Color((int) red.getValue(), (int) green.getValue(), (int) blue.getValue());
@@ -87,5 +89,6 @@ public class ESP extends Module {
                 }
             }
         }
+        GlStateManager.popMatrix();
     }
 }

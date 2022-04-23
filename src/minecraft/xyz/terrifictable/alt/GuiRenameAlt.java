@@ -1,16 +1,13 @@
 package xyz.terrifictable.alt;
 
-import java.io.IOException;
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumChatFormatting;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.ui.UiButton;
+
+import java.io.IOException;
 
 public class GuiRenameAlt
 extends GuiScreen {

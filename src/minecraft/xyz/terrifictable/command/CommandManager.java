@@ -17,7 +17,8 @@ public class CommandManager {
     }
 
     public void setup() {
-        addCommand(new addXrayBlock());
+        addCommand(new FriendCommands());
+        addCommand(new XrayCommands());
         addCommand(new Commands());
         addCommand(new Modules());
         addCommand(new Prefix());

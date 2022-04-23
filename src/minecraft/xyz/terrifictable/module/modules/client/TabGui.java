@@ -1,15 +1,11 @@
 package xyz.terrifictable.module.modules.client;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.events.Event;
 import xyz.terrifictable.events.listeners.EventKey;
 import xyz.terrifictable.events.listeners.EventRenderGui;
-import xyz.terrifictable.events.listeners.EventUpdate;
 import xyz.terrifictable.module.Module;
 import xyz.terrifictable.setting.Setting;
 import xyz.terrifictable.setting.settings.BooleanSetting;
@@ -19,7 +15,6 @@ import xyz.terrifictable.setting.settings.NumberSetting;
 import xyz.terrifictable.util.ColorUtil;
 import xyz.terrifictable.util.font.MinecraftFontRenderer;
 
-import java.awt.*;
 import java.util.List;
 
 public class TabGui extends Module {

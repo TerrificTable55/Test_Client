@@ -4,8 +4,8 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
@@ -38,6 +38,8 @@ public class TargetHud extends Module {
         if (!(event instanceof EventRenderGui)) return;
 
         sr = new ScaledResolution(mc);
+
+        if (Killaura.target instanceof EntityItemFrame || mc.pointedEntity instanceof EntityItemFrame) return;
 
         if (mode.getMode().equalsIgnoreCase("pointed")) {
             target = (EntityLivingBase) mc.pointedEntity;

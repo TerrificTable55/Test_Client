@@ -42,8 +42,14 @@ public class Hud extends Module {
                 GlStateManager.translate(2, 2, 0);
                 GlStateManager.scale(2, 2, 1);
                 GlStateManager.translate(-2, -2, 0);
-                mc.fontRendererObj.drawString(Client.name, 2, watermark_y, 0xffffff);
-                mc.fontRendererObj.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 2, watermark_y, 0xedf5a2);
+                mc.fontRendererObj.drawString(Client.name, 2, watermark_y + 1, 0xffffff);
+                GlStateManager.popMatrix();
+
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(2, 2, 0);
+                GlStateManager.scale(1.2, 1.2, 1);
+                GlStateManager.translate(-2, -2, 0);
+                mc.fontRendererObj.drawString(" v" + Client.version, fr.getStringWidth(Client.name) + 16, watermark_y, 0xedf5a2);
                 GlStateManager.popMatrix();
             }
 

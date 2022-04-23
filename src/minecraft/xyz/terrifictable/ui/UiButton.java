@@ -10,6 +10,7 @@ import java.awt.*;
 public class UiButton extends GuiButton {
 
     private int fade;
+    private int r = 255, g = 255, b = 255;
 
     public UiButton(int buttonId, int x, int y, String buttonText) {
         super(buttonId, x, y, 200, 20, buttonText);
@@ -17,6 +18,26 @@ public class UiButton extends GuiButton {
 
     public UiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
         super(buttonId, x, y, widthIn, heightIn, buttonText);
+    }
+
+    public UiButton(int buttonId, int x, int y, String buttonText, int r, int g, int b) {
+        super(buttonId, x, y, 200, 20, buttonText);
+        if (r != 255 || r != -1)
+            this.r = r;
+        if (g != 255 || g != -1)
+            this.g = g;
+        if (b != 255 || b != -1)
+            this.b = b;
+    }
+
+    public UiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, int r, int g, int b) {
+        super(buttonId, x, y, widthIn, heightIn, buttonText);
+        if (r != 255 || r != -1)
+            this.r = r;
+        if (g != 255 || g != -1)
+            this.g = g;
+        if (b != 255 || b != -1)
+            this.b = b;
     }
 
     @Override
@@ -34,7 +55,7 @@ public class UiButton extends GuiButton {
                     this.fade -= 5;
             }
 
-            final Color color = new Color(255, 255, 255, this.fade);
+            final Color color = new Color(this.r, this.g, this.b, this.fade);
             Gui.drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, color.getRGB());
             Client.fr.drawCenteredString(this.displayString, this.xPosition + (this.width / 2f), this.yPosition + ((this.height - 8) / 2f), 0xff34e1eb);
         }

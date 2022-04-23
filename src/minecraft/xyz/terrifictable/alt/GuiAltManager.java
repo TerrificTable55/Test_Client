@@ -1,17 +1,19 @@
 package xyz.terrifictable.alt;
 
-import java.io.IOException;
-
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
-
-import net.minecraft.client.gui.*;
-import net.minecraft.util.EnumChatFormatting;
 import xyz.terrifictable.Client;
 import xyz.terrifictable.alt.theAltening.AlteningServiceType;
 import xyz.terrifictable.alt.theAltening.TheAlteningAuthentication;
 import xyz.terrifictable.ui.UiButton;
+
+import java.io.IOException;
 
 public class GuiAltManager
 extends GuiScreen {
