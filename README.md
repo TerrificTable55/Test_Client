@@ -6,10 +6,11 @@ Minecaft 1.8.8 Client i made to learn about java (mainly rendering stuff)<br><br
 
 ## Version 1.7
 
+added autoarmor and inventory sorter and some more stuff (velocity doesnt work) and a (commented out) target strafe, updated esp and (updated/fixed) scaffold, fixed some stuff like antibot and tabgui is weird (will be fixed in 1.8) and added Criticals, AntiBot and improved some more stuff like killaura and targetui (the target view thingy is still bugy and i dont know why) and added mode thingys to tabgui (only for some modules), added more mainmenu images and a new mainmenu mode, now alts get encoded before being saved oh and added a friend system<br>
+
 <img src="https://cdn.discordapp.com/attachments/944354446337507358/967522873159868416/unknown.png" />
 <img src="https://cdn.discordapp.com/attachments/944354446337507358/967526056795983912/unknown.png" />
 
-added autoarmor and inventory sorter and some more stuff (velocity doesnt work) and a (commented out) target strafe, updated esp and (updated/fixed) scaffold, fixed some stuff like antibot and tabgui is weird (will be fixed in 1.8) and added Criticals, AntiBot and improved some more stuff like killaura and targetui (the target view thingy is still bugy and i dont know why) and added mode thingys to tabgui (only for some modules), added more mainmenu images and a new mainmenu mode, now alts get encoded before being saved oh and added a friend system<br>
 
 Modules            | Commands
 -------------------|---------
