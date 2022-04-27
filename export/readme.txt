@@ -15,35 +15,29 @@ just create a new minecraft version thingy in the launcher and select "tutorial"
 
 oh yea here are the links
 
+JSON: https://cdn.discordapp.com/attachments/944354446337507358/968890525673476126/test.json
+
 Version 1.7
 JAR:      https://anonfiles.com/V8e995Zdxa/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.6
 JAR:      https://anonfiles.com/30QaUeYcx4/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 
 Version 1.5
 JAR:      https://anonfiles.com/dfkbLfYbxf/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.4
 JAR:      https://anonfiles.com/ncI5m8Yfx4/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.3
 JAR:      https://anonfiles.com/h97cb3Ycxe/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.2
 JAR:      https://anonfiles.com/Bfi6h3X1x7/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.1
 JAR:      https://anonfiles.com/Jb28d4X2x1/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
 
 Version 1.0
 JAR:      https://anonfiles.com/Lef9Y8Wdx3/test_jar
-JSON:     https://anonfiles.com/f0eaY3W0xb/test_json
